@@ -1,7 +1,7 @@
 public class Maladie
 {
     public string Nom { get; set; }
-    public float Proba { get; set; } // Probabilité d'affection
+    public float Proba { get; set; }
 
     public Maladie(string nom, float proba)
     {

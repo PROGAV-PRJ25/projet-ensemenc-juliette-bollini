@@ -13,6 +13,7 @@ public abstract class Plante
     public List<Maladie> Maladies { get; set; }
     public int EsperanceVie { get; set; }
     public int Production { get; set; }
+    public int Age { get; set; } = 0;
 
     public Plante()
     {
