@@ -4,7 +4,6 @@ public class Coca : Plante
     {
         Nature = "Coca (stimulant)";
         SaisonsSemis.Add("Printemps");
-        TerrainPrefere = "terre argileuse";
         Espacement = 0.7f;
         EspaceNecessaire = 1.2f;
         VitesseDeCroissance = 0.6f;

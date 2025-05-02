@@ -4,7 +4,6 @@ public class Cannabis : Plante
     {
         Nature = "Cannabis (plante récréative)";
         SaisonsSemis.AddRange(new[] { "Printemps", "Été" });
-        TerrainPrefere = "terre légère";
         Espacement = 1.0f;
         EspaceNecessaire = 2.0f;
         VitesseDeCroissance = 0.8f;

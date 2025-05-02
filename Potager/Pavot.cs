@@ -1,10 +1,16 @@
 public class Pavot : Plante
 {
+    // Compteur statique, initialisé à 0 une seule fois pour la classe Pavot
+    private static int _compteur = 0;
+
     public Pavot()
     {
+        // Incrémente le compteur et génère le nom unique
+        _compteur++;
+        Nom = $"pavot{_compteur}";
+
         Nature = "Pavot (opiacé)";
         SaisonsSemis.Add("Printemps");
-        TerrainPrefere = "terre lourde";
         Espacement = 0.5f;
         EspaceNecessaire = 1.0f;
         VitesseDeCroissance = 0.5f;
