@@ -10,10 +10,9 @@ public class Pavot : Plante
         Nom = $"pavot{_compteur}";
 
         Nature = "Pavot (opiacé)";
-        SaisonsSemis.Add("Printemps");
-        Espacement = 0.5f;
+        SaisonsSemis = new List<Saison> { Saison.Printemps };
         EspaceNecessaire = 1.0f;
-        VitesseDeCroissance = 0.5f;
+        VitesseDeCroissance = 0.02f;
         BesoinsEau = 0.5f;
         BesoinsLuminosite = 0.7f;
         TemperatureMin = 10;

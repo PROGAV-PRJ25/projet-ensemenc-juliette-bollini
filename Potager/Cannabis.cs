@@ -1,10 +1,12 @@
 public class Cannabis : Plante
 {
+    private static int _compteur = 0;
+
     public Cannabis()
     {
         Nature = "Cannabis (plante récréative)";
-        SaisonsSemis.AddRange(new[] { "Printemps", "Été" });
-        Espacement = 1.0f;
+        Nom = $"Canabis{_compteur}";
+        SaisonsSemis = new List<Saison> { Saison.Printemps };
         EspaceNecessaire = 2.0f;
         VitesseDeCroissance = 0.8f;
         BesoinsEau = 0.6f;

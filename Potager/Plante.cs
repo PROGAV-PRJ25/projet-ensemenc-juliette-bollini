@@ -2,8 +2,7 @@ public abstract class Plante
 {
     public string Nature { get; set; }
     public string Nom { get; protected set; }
-    public List<string> SaisonsSemis { get; set; }
-    public float Espacement { get; set; }
+    public List<Saison> SaisonsSemis { get; set; }
     public float EspaceNecessaire { get; set; }
     public float VitesseDeCroissance { get; set; }
     public float BesoinsEau { get; set; }
@@ -21,7 +20,28 @@ public abstract class Plante
 
     public Plante()
     {
-        SaisonsSemis = new List<string>();
+        SaisonsSemis = new List<Saison>();
+    }
+
+    public void Croitre(double eauDispo, double temperature, Saison saison)
+    {
+        // 1) On ne croît que si la saison est bonne et si la plante est vivante
+        if (!EstVivante)
+            return;
+
+        // 2) Calcul des facteurs eau et température
+        double fe = Math.Min(eauDispo / BesoinsEau, 1.0);
+        // double fl = Math.Min(lumDispo / BesoinsLuminausite, 1.0);
+        double ft = (temperature < TemperatureMin || temperature > TemperatureMax) ? 0.5 : 1.0;
+
+        // 3) Incrémenter âge et production
+        double delta = VitesseDeCroissance * fe * ft; //fl
+        Age += (int)Math.Floor(delta);
+        Production += (int)Math.Floor(delta);
+
+        // 4) Si on dépasse l'espérance de vie, la plante meurt
+        if (Age >= EsperanceVie)
+            EstVivante = false;
     }
 
     public void DevenirMalade()

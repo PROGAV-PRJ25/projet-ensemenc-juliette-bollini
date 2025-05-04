@@ -1,10 +1,13 @@
 public class Coca : Plante
 {
+    private static int _compteur = 0;
+
     public Coca()
     {
+        Nom = $"Coca{_compteur}";
         Nature = "Coca (stimulant)";
-        SaisonsSemis.Add("Printemps");
-        Espacement = 0.7f;
+        SaisonsSemis = new List<Saison> { Saison.Printemps };
+
         EspaceNecessaire = 1.2f;
         VitesseDeCroissance = 0.6f;
         BesoinsEau = 0.4f;

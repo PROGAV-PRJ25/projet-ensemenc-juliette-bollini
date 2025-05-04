@@ -1,9 +1,12 @@
 public class TerrainSableux : Terrain
 {
+    private static int _compteur = 0;
+
     public TerrainSableux()
     {
+        _compteur++;
+        Nom = $"Terrain sableux{_compteur}";
         TypeSol = "sable";
-        Superficie = 10f;
         TeneurEau = 0.3f;
     }
 }
