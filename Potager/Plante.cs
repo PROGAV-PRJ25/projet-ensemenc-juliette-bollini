@@ -23,6 +23,25 @@ public abstract class Plante
         SaisonsSemis = new List<Saison>();
     }
 
+    public string GetSymbole()
+    {
+        if (Nature == null)
+            return ""; // Sol vide
+        if (EstVivante == false)
+            return "💀";
+        else if (EstMature == false)
+            return "🌱";
+        else if (Nature == "Cannabis") //comme les noms des plantes seront associées à un numéro le contains parait nécessaire
+            return "🌿";
+        else if (Nature == "Pavot" && EstMature == true)
+            return "🌸";
+        else if (Nature == "Coca" && EstMature == true)
+            return "🌵";
+        else
+            Console.WriteLine("cette plante n'existe pas dans le jeu ");
+        return "";
+    }
+
     public void Croitre(double eauDispo, double temperature, Saison saison)
     {
         // 1) On ne croît que si la saison est bonne et si la plante est vivante

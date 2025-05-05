@@ -9,7 +9,7 @@ public class Pavot : Plante
         _compteur++;
         Nom = $"pavot{_compteur}";
 
-        Nature = "Pavot (opiacé)";
+        Nature = "Pavot";
         SaisonsSemis = new List<Saison> { Saison.Printemps };
         EspaceNecessaire = 1.0f;
         VitesseDeCroissance = 0.02f;

@@ -6,7 +6,7 @@ var terrainsTerre = new List<TerrainTerre>();
 var terrainsSableux = new List<TerrainSableux>();
 var terrains = new List<List<Terrain>>();
 int nombreDeSemaine;
-
+var affichage = new Affichage();
 terrainsArgiles.Add(new TerrainArgile());
 terrainsSableux.Add(new TerrainSableux());
 terrainsTerre.Add(new TerrainTerre());
@@ -86,6 +86,7 @@ for (int j = 1; j < nombreDeSemaine * 7 + 1; j++)
                                 semisCannabis.Add(new Cannabis());
                                 terrainsTerre[numeroTerrain].AjouterPlante(semisCannabis[0]);
                                 semisCannabis.RemoveAt(0);
+                                affichage.AfficherTerrain(terrainsTerre[numeroTerrain]);
                             }
                             else if (touche3 == '3')
                             {
@@ -94,6 +95,7 @@ for (int j = 1; j < nombreDeSemaine * 7 + 1; j++)
                                 semisPavots.Add(new Pavot());
                                 terrainsTerre[numeroTerrain].AjouterPlante(semisPavots[0]);
                                 semisPavots.RemoveAt(0);
+                                affichage.AfficherTerrain(terrainsTerre[numeroTerrain]);
                             }
                             else
                             {
@@ -140,6 +142,7 @@ for (int j = 1; j < nombreDeSemaine * 7 + 1; j++)
                                 semisCoca.Add(new Coca());
                                 terrainsSableux[numeroTerrain].AjouterPlante(semisCoca[0]);
                                 semisCoca.RemoveAt(0);
+                                affichage.AfficherTerrain(terrainsTerre[numeroTerrain]);
                             }
                             else if (touche3 == '2')
                             {
@@ -148,6 +151,7 @@ for (int j = 1; j < nombreDeSemaine * 7 + 1; j++)
                                 semisCannabis.Add(new Cannabis());
                                 terrainsSableux[numeroTerrain].AjouterPlante(semisCannabis[0]);
                                 semisCannabis.RemoveAt(0);
+                                affichage.AfficherTerrain(terrainsTerre[numeroTerrain]);
                             }
                             else if (touche3 == '3')
                             {
@@ -156,6 +160,7 @@ for (int j = 1; j < nombreDeSemaine * 7 + 1; j++)
                                 semisPavots.Add(new Pavot());
                                 terrainsSableux[numeroTerrain].AjouterPlante(semisPavots[0]);
                                 semisPavots.RemoveAt(0);
+                                affichage.AfficherTerrain(terrainsTerre[numeroTerrain]);
                             }
                             else
                             {
@@ -202,6 +207,7 @@ for (int j = 1; j < nombreDeSemaine * 7 + 1; j++)
                                 semisCoca.Add(new Coca());
                                 terrainsArgiles[numeroTerrain].AjouterPlante(semisCoca[0]);
                                 semisCoca.RemoveAt(0);
+                                affichage.AfficherTerrain(terrainsTerre[numeroTerrain]);
                             }
                             else if (touche3 == '2')
                             {
@@ -210,6 +216,7 @@ for (int j = 1; j < nombreDeSemaine * 7 + 1; j++)
                                 semisCannabis.Add(new Cannabis());
                                 terrainsArgiles[numeroTerrain].AjouterPlante(semisCannabis[0]);
                                 semisCannabis.RemoveAt(0);
+                                affichage.AfficherTerrain(terrainsTerre[numeroTerrain]);
                             }
                             else if (touche3 == '3')
                             {
@@ -218,6 +225,7 @@ for (int j = 1; j < nombreDeSemaine * 7 + 1; j++)
                                 semisPavots.Add(new Pavot());
                                 terrainsArgiles[numeroTerrain].AjouterPlante(semisPavots[0]);
                                 semisPavots.RemoveAt(0);
+                                affichage.AfficherTerrain(terrainsTerre[numeroTerrain]);
                             }
                             else
                             {
