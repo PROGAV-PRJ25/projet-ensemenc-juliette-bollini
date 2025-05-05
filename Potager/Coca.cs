@@ -5,7 +5,7 @@ public class Coca : Plante
     public Coca()
     {
         Nom = $"Coca{_compteur}";
-        Nature = "Coca (stimulant)";
+        Nature = "Coca";
         SaisonsSemis = new List<Saison> { Saison.Printemps };
 
         EspaceNecessaire = 1.2f;
