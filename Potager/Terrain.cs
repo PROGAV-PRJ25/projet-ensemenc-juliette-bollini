@@ -1,5 +1,6 @@
 public abstract class Terrain
 {
+    public int Place { get; set; } = 9;
     public string Nom { get; protected set; }
 
     // Type de sol (sable, terre, argile…)
@@ -19,6 +20,6 @@ public abstract class Terrain
     public virtual void AjouterPlante(Plante plante)
     {
         Plantes.Add(plante);
-        Console.WriteLine($"→ {plante.Nom} planté(e) sur terrain {TypeSol}.");
+        Console.WriteLine($"→ {plante.Nom} planté(e) sur terrain {Nom}.");
     }
 }
