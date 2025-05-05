@@ -18,6 +18,5 @@ public class Pavot : Plante
         TemperatureMin = 10;
         TemperatureMax = 25;
         EsperanceVie = 90;
-        Production = 3;
     }
 }

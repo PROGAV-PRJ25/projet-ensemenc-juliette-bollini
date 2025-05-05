@@ -10,7 +10,7 @@ public abstract class Plante
     public float TemperatureMin { get; set; }
     public float TemperatureMax { get; set; }
     public int EsperanceVie { get; set; }
-    public int Production { get; set; }
+    public double Production { get; set; } = 0;
     public int Age { get; set; } = 0;
     public bool EstVivante { get; set; } = true;
     public bool EstMature { get; set; } = false;
@@ -36,12 +36,18 @@ public abstract class Plante
 
         // 3) Incrémenter âge et production
         double delta = VitesseDeCroissance * fe * ft; //fl
-        Age += (int)Math.Floor(delta);
-        Production += (int)Math.Floor(delta);
-
+        Age += 1;
+        Production += delta;
+        if (delta > 1)
+        {
+            EstMature = true;
+            Console.WriteLine($"la plante {Nom} a atteint ça maturitée");
+        }
         // 4) Si on dépasse l'espérance de vie, la plante meurt
         if (Age >= EsperanceVie)
+        {
             EstVivante = false;
+        }
     }
 
     public void DevenirMalade()

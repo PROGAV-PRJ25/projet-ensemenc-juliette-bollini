@@ -15,6 +15,5 @@ public class Coca : Plante
         TemperatureMin = 18;
         TemperatureMax = 28;
         EsperanceVie = 100;
-        Production = 4;
     }
 }

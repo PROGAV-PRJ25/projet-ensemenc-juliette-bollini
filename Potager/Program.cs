@@ -4,7 +4,9 @@ var semisCoca = new List<Coca>();
 var terrainsArgiles = new List<TerrainArgile>();
 var terrainsTerre = new List<TerrainTerre>();
 var terrainsSableux = new List<TerrainSableux>();
+var terrains = new List<List<Terrain>>();
 int nombreDeSemaine;
+
 terrainsArgiles.Add(new TerrainArgile());
 terrainsSableux.Add(new TerrainSableux());
 terrainsTerre.Add(new TerrainTerre());
@@ -244,6 +246,7 @@ for (int j = 1; j < nombreDeSemaine * 7 + 1; j++)
             Console.WriteLine("\nSaisie invalide. Veuillez appuyer sur 1 pour OUI ou 2 pour NON.");
         }
     }
+    
 }
 
 for (int i = 0; i < 6; i++)

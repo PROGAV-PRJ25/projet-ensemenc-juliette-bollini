@@ -14,6 +14,5 @@ public class Cannabis : Plante
         TemperatureMin = 15;
         TemperatureMax = 30;
         EsperanceVie = 120;
-        Production = 5;
     }
 }
