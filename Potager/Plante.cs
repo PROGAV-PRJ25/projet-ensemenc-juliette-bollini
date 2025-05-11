@@ -42,7 +42,7 @@ public abstract class Plante
         return "";
     }
 
-    public void Croitre(double eauDispo, double temperature, Saison saison)
+    public void Croitre(double eauDispo, double temperature)
     {
         // 1) On ne croît que si la saison est bonne et si la plante est vivante
         if (!EstVivante)
@@ -57,7 +57,7 @@ public abstract class Plante
         double delta = VitesseDeCroissance * fe * ft; //fl
         Age += 1;
         Production += delta;
-        if (delta > 1)
+        if (Production >= 1 && !EstMature)
         {
             EstMature = true;
             Console.WriteLine($"la plante {Nom} a atteint ça maturitée");
@@ -80,6 +80,14 @@ public abstract class Plante
         else
         {
             Console.WriteLine($"La plante {Nom} résiste à la maladie {Maladie}");
+        }
+    }
+
+    public void Recolter()
+    {
+        if (EstVivante && EstMature)
+        {
+            EstMature = false;
         }
     }
 }

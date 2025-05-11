@@ -4,7 +4,6 @@ var semisCoca = new List<Coca>();
 var terrainsArgiles = new List<TerrainArgile>();
 var terrainsTerre = new List<TerrainTerre>();
 var terrainsSableux = new List<TerrainSableux>();
-var terrains = new List<List<Terrain>>();
 int nombreDeSemaine;
 var affichage = new Affichage();
 terrainsArgiles.Add(new TerrainArgile());
@@ -78,6 +77,7 @@ for (int j = 1; j < nombreDeSemaine * 7 + 1; j++)
                                 semisCoca.Add(new Coca());
                                 terrainsTerre[numeroTerrain].AjouterPlante(semisCoca[0]);
                                 semisCoca.RemoveAt(0);
+                                affichage.AfficherTerrain(terrainsTerre[numeroTerrain]);
                             }
                             else if (touche3 == '2')
                             {
@@ -142,7 +142,7 @@ for (int j = 1; j < nombreDeSemaine * 7 + 1; j++)
                                 semisCoca.Add(new Coca());
                                 terrainsSableux[numeroTerrain].AjouterPlante(semisCoca[0]);
                                 semisCoca.RemoveAt(0);
-                                affichage.AfficherTerrain(terrainsTerre[numeroTerrain]);
+                                affichage.AfficherTerrain(terrainsSableux[numeroTerrain]);
                             }
                             else if (touche3 == '2')
                             {
@@ -151,7 +151,7 @@ for (int j = 1; j < nombreDeSemaine * 7 + 1; j++)
                                 semisCannabis.Add(new Cannabis());
                                 terrainsSableux[numeroTerrain].AjouterPlante(semisCannabis[0]);
                                 semisCannabis.RemoveAt(0);
-                                affichage.AfficherTerrain(terrainsTerre[numeroTerrain]);
+                                affichage.AfficherTerrain(terrainsSableux[numeroTerrain]);
                             }
                             else if (touche3 == '3')
                             {
@@ -160,7 +160,7 @@ for (int j = 1; j < nombreDeSemaine * 7 + 1; j++)
                                 semisPavots.Add(new Pavot());
                                 terrainsSableux[numeroTerrain].AjouterPlante(semisPavots[0]);
                                 semisPavots.RemoveAt(0);
-                                affichage.AfficherTerrain(terrainsTerre[numeroTerrain]);
+                                affichage.AfficherTerrain(terrainsSableux[numeroTerrain]);
                             }
                             else
                             {
@@ -207,7 +207,7 @@ for (int j = 1; j < nombreDeSemaine * 7 + 1; j++)
                                 semisCoca.Add(new Coca());
                                 terrainsArgiles[numeroTerrain].AjouterPlante(semisCoca[0]);
                                 semisCoca.RemoveAt(0);
-                                affichage.AfficherTerrain(terrainsTerre[numeroTerrain]);
+                                affichage.AfficherTerrain(terrainsArgiles[numeroTerrain]);
                             }
                             else if (touche3 == '2')
                             {
@@ -216,7 +216,7 @@ for (int j = 1; j < nombreDeSemaine * 7 + 1; j++)
                                 semisCannabis.Add(new Cannabis());
                                 terrainsArgiles[numeroTerrain].AjouterPlante(semisCannabis[0]);
                                 semisCannabis.RemoveAt(0);
-                                affichage.AfficherTerrain(terrainsTerre[numeroTerrain]);
+                                affichage.AfficherTerrain(terrainsArgiles[numeroTerrain]);
                             }
                             else if (touche3 == '3')
                             {
@@ -225,7 +225,7 @@ for (int j = 1; j < nombreDeSemaine * 7 + 1; j++)
                                 semisPavots.Add(new Pavot());
                                 terrainsArgiles[numeroTerrain].AjouterPlante(semisPavots[0]);
                                 semisPavots.RemoveAt(0);
-                                affichage.AfficherTerrain(terrainsTerre[numeroTerrain]);
+                                affichage.AfficherTerrain(terrainsArgiles[numeroTerrain]);
                             }
                             else
                             {
@@ -254,7 +254,13 @@ for (int j = 1; j < nombreDeSemaine * 7 + 1; j++)
             Console.WriteLine("\nSaisie invalide. Veuillez appuyer sur 1 pour OUI ou 2 pour NON.");
         }
     }
-    
+    for (int i = 0; i < terrainsSableux.Count; i++)
+    {
+        for (int ii = 0; ii < terrainsSableux[i].Plantes.Count; ii++)
+        {
+            terrainsSableux[i].Plantes[ii].Croitre(1, 15);
+        }
+    }
 }
 
 for (int i = 0; i < 6; i++)

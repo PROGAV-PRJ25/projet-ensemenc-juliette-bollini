@@ -12,7 +12,7 @@ public class Pavot : Plante
         Nature = "Pavot";
         SaisonsSemis = new List<Saison> { Saison.Printemps };
         EspaceNecessaire = 1.0f;
-        VitesseDeCroissance = 0.02f;
+        VitesseDeCroissance = 1f;
         BesoinsEau = 0.5f;
         BesoinsLuminosite = 0.7f;
         TemperatureMin = 10;
