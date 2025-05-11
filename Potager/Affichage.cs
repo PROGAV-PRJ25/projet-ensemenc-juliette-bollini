@@ -25,10 +25,11 @@ public class Affichage
     public void AfficherMenuClassique() //une lecture des touches données par le joueur est à faire
     {
         Console.WriteLine("\n--- Menu ---");
-        Console.WriteLine("1. Arroser");
-        Console.WriteLine("2. Récolter");
-        Console.WriteLine("3. Changer de terrain");
-        Console.WriteLine("4. Passer à la semaine suivante");
+        Console.WriteLine("1. Planter");
+        Console.WriteLine("2. Arroser");
+        Console.WriteLine("3. Récolter");
+        Console.WriteLine("4. Ratisser");
+        Console.WriteLine("6. Fini ");
     }
 
     public void AfficherAlerte(string message) // voir pour le type de message entre alerte

@@ -9,25 +9,24 @@ var affichage = new Affichage();
 terrainsArgiles.Add(new TerrainArgile());
 terrainsSableux.Add(new TerrainSableux());
 terrainsTerre.Add(new TerrainTerre());
-for (int i = 0; i < 5; i++)
-{
-    semisPavots.Add(new Pavot());
-}
 
+affichage.AfficherDebut();
 Console.WriteLine("combien de semaine voulez vous jouer?");
 nombreDeSemaine = int.Parse(Console.ReadLine()!);
 
-for (int j = 1; j < nombreDeSemaine * 7 + 1; j++)
+int jour = 1;
+while (jour <= nombreDeSemaine * 7) // la boucle while sert à pouvoir effectuer plusieurs actions le même jour
 {
-    Console.WriteLine($"jour: {j}");
+    Console.WriteLine($"jour: {jour}");
     bool choixValide = false;
+    bool jourEnCours = true; // variable qui change pour changer de jour
 
-    while (!choixValide)
+    while (!choixValide && jourEnCours == true)
     {
-        Console.WriteLine("Voulez-vous planter un semis ?");
-        Console.WriteLine("Appuyez sur 1 pour OUI, 2 pour NON :");
+        Console.WriteLine("Que voulez-vous faire aujourd'hui?");
+        affichage.AfficherMenuClassique();
 
-        ConsoleKeyInfo keyInfo = Console.ReadKey(intercept: true);
+        ConsoleKeyInfo keyInfo = Console.ReadKey(intercept: true); // on lit les touches que l'utilisateur fait
         char touche = keyInfo.KeyChar;
 
         if (touche == '1')
@@ -72,7 +71,7 @@ for (int j = 1; j < nombreDeSemaine * 7 + 1; j++)
 
                             if (touche3 == '1')
                             {
-                                Console.WriteLine("\nVous avez choisi de planter de ma Coca");
+                                Console.WriteLine("\nVous avez choisi de planter de la Coca");
                                 choix3Valide = true;
                                 semisCoca.Add(new Coca());
                                 terrainsTerre[numeroTerrain].AjouterPlante(semisCoca[0]);
@@ -249,9 +248,29 @@ for (int j = 1; j < nombreDeSemaine * 7 + 1; j++)
             Console.WriteLine("\nVous avez choisi de ne rien faire.");
             choixValide = true;
         }
+        else if (touche == '3')
+            Console.WriteLine("\nVous avez choisi de ratisser.");
+        // à implémenter
+
+
+        else if (touche == '4') // Arroser
+            Console.WriteLine("\nVous avez choisi d’arroser.");
+        // à implémenter
+
+        else if (touche == '5') // Récolter
+            Console.WriteLine("\nVous avez choisi de récolter.");
+        // à implémenter
+
+
+        else if (touche == '6') // Passer au jour suivant
+        {
+            Console.WriteLine("\nVous passez au jour suivant.");
+            jourEnCours = false;
+            jour++;
+        }
         else
         {
-            Console.WriteLine("\nSaisie invalide. Veuillez appuyer sur 1 pour OUI ou 2 pour NON.");
+            Console.WriteLine("\nSaisie invalide. Veuillez appuyer sur une touche valide.");
         }
     }
     for (int i = 0; i < terrainsSableux.Count; i++)
@@ -261,26 +280,4 @@ for (int j = 1; j < nombreDeSemaine * 7 + 1; j++)
             terrainsSableux[i].Plantes[ii].Croitre(1, 15);
         }
     }
-}
-
-for (int i = 0; i < 6; i++)
-{
-    semisPavots.Add(new Pavot());
-}
-
-for (int i = 0; i < semisPavots.Count; i++)
-{
-    Console.WriteLine($"Semis #{i + 1}");
-}
-
-for (int i = 0; i < 3; i++)
-{
-    terrainsArgiles[0].AjouterPlante(semisPavots[0]);
-    semisPavots.RemoveAt(0);
-}
-
-for (int i = 0; i < 2; i++)
-{
-    terrainsTerre[0].AjouterPlante(semisPavots[0]);
-    semisPavots.RemoveAt(0);
 }
