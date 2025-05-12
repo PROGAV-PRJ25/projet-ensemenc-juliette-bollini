@@ -95,4 +95,6 @@ public abstract class Plante
 
     // Hook pour que chaque plante incremente son propre compteur
     protected virtual void AjouterAuPanier() { }
+
+
 }
