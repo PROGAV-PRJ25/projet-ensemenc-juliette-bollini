@@ -32,4 +32,15 @@ public abstract class Terrain
             Plantes[i].Recolter();
         }
     }
+
+    protected void Ratisser()
+    {
+        for (int i = 0; i < Plantes.Count; i++)
+        {
+            if (!Plantes[i].EstVivante)
+            {
+                Plantes.RemoveAt(i);
+            }
+        }
+    }
 }
