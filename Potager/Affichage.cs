@@ -29,7 +29,7 @@ public class Affichage
         Console.WriteLine("2. Arroser");
         Console.WriteLine("3. Récolter");
         Console.WriteLine("4. Ratisser");
-        Console.WriteLine("6. Fini ");
+        Console.WriteLine("5. Fini ");
     }
 
     public void AfficherAlerte(string message) // voir pour le type de message entre alerte

@@ -243,28 +243,104 @@ while (jour <= nombreDeSemaine * 7) // la boucle while sert à pouvoir effectuer
                 }
             }
         }
-        else if (touche == '2')
+        else if (touche == '2') //Arroser
         {
-            Console.WriteLine("\nVous avez choisi de ne rien faire.");
+            Console.WriteLine("\nVous avez choisi d'arroser'.");
             choixValide = true;
         }
-        else if (touche == '3')
+        else if (touche == '3') //Récolter
+        {
+            Console.WriteLine("\nVous avez choisi de récolter.");
+            bool choix2Valide = false;
+
+            while (!choix2Valide)
+            {
+                Console.WriteLine("quel type de terrain voulez vous récolter ?");
+                Console.WriteLine("1)Terre 2)Sable 3)Argile");
+
+                ConsoleKeyInfo keyInfo2 = Console.ReadKey(intercept: true); // ne pas afficher la touche
+                char touche2 = keyInfo2.KeyChar;
+                if (touche2 == '1')
+                {
+                    Console.WriteLine("\nVous avez choisi Terre!");
+                    choix2Valide = true;
+                    Console.WriteLine("Sur le quel voulez vous recolter ?");
+                    int numeroTerrain;
+                    for (int i = 1; i <= terrainsTerre.Count; i++)
+                    {
+                        Console.Write($"{i}){terrainsTerre[i - 1].Nom} ");
+                    }
+                    Console.WriteLine("\nchoisissez puis entrer");
+                    numeroTerrain = int.Parse(Console.ReadLine()!) - 1;
+
+                    if (terrainsTerre[numeroTerrain].Place > 0)
+                    {
+                        Console.WriteLine(
+                            $"Vous avez décidé de récolter sur {terrainsTerre[numeroTerrain].Nom}"
+                        );
+                        terrainsTerre[numeroTerrain].RecolterTerrain();
+                    }
+                    else
+                    {
+                        Console.WriteLine("il n'y a plus de place dans ce terrain");
+                    }
+                }
+                else if (touche2 == '2')
+                {
+                    Console.WriteLine("\nVous avez choisi Sable");
+                    choix2Valide = true;
+                    Console.WriteLine("Sur le quel voulez vous recolter ?");
+                    int numeroTerrain;
+                    for (int i = 1; i <= terrainsSableux.Count; i++)
+                    {
+                        Console.Write($"{i}){terrainsSableux[i - 1].Nom} ");
+                    }
+                    Console.WriteLine("\nchoisissez puis entrer");
+                    numeroTerrain = int.Parse(Console.ReadLine()!) - 1;
+                    if (terrainsSableux[numeroTerrain].Place > 0)
+                    {
+                        Console.WriteLine(
+                            $"Vous avez décidé de récolter sur {terrainsSableux[numeroTerrain].Nom}"
+                        );
+                        terrainsSableux[numeroTerrain].RecolterTerrain();
+                    }
+                }
+                else if (touche2 == '3')
+                {
+                    Console.WriteLine("\nVous avez choisi Argile");
+                    choix2Valide = true;
+                    Console.WriteLine("Sur le quel voulez vous récolter ?");
+                    int numeroTerrain;
+                    for (int i = 1; i <= terrainsArgiles.Count; i++)
+                    {
+                        Console.Write($"{i}){terrainsArgiles[i - 1].Nom} ");
+                    }
+                    Console.WriteLine("\nchoisissez puis entrer");
+                    numeroTerrain = int.Parse(Console.ReadLine()!) - 1;
+                    if (terrainsArgiles[numeroTerrain].Place > 0)
+                    {
+                        Console.WriteLine(
+                            $"Vous avez décidé de récolter {terrainsArgiles[numeroTerrain].Nom}"
+                        );
+                        terrainsArgiles[numeroTerrain].RecolterTerrain();
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("\nSaisie invalide.");
+                }
+            }
+        }
+        else if (touche == '4') // Ratisser
             Console.WriteLine("\nVous avez choisi de ratisser.");
         // à implémenter
 
-
-        else if (touche == '4') // Arroser
-            Console.WriteLine("\nVous avez choisi d’arroser.");
-        // à implémenter
-
-        else if (touche == '5') // Récolter
-            Console.WriteLine("\nVous avez choisi de récolter.");
-        // à implémenter
-
-
-        else if (touche == '6') // Passer au jour suivant
+        else if (touche == '5') // Passer au jour suivant
         {
             Console.WriteLine("\nVous passez au jour suivant.");
+            Console.WriteLine(
+                $"\n-Vous avez dans votre stock {Pavot.TotalHarvested} de Pavot \n-Vous avez dans votre stock {Cannabis.TotalHarvested} de Cannabis \n-Vous avez dans votre stock {Coca.TotalHarvested} de Cocaïne"
+            );
             jourEnCours = false;
             jour++;
             for (int i = 0; i < terrainsSableux.Count; i++)
