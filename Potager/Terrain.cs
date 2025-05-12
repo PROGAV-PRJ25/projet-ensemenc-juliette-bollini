@@ -24,4 +24,12 @@ public abstract class Terrain
     }
 
     protected virtual void Arroser() { }
+
+    public virtual void RecolterTerrain()
+    {
+        for (int i = 0; i < Plantes.Count; i++)
+        {
+            Plantes[i].Recolter();
+        }
+    }
 }
