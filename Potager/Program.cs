@@ -273,7 +273,7 @@ while (jour <= nombreDeSemaine * 7) // la boucle while sert à pouvoir effectuer
                         Console.WriteLine(
                             $"Vous avez décidé d'arroser {terrainsTerre[numeroTerrain].Nom}"
                         );
-                        terrainsTerre[numeroTerrain].RecolterTerrain();
+                        terrainsTerre[numeroTerrain].ArroserTerrain();
                     }
                     else
                     {
@@ -297,7 +297,7 @@ while (jour <= nombreDeSemaine * 7) // la boucle while sert à pouvoir effectuer
                         Console.WriteLine(
                             $"Vous avez décidé d'arroser {terrainsSableux[numeroTerrain].Nom}"
                         );
-                        terrainsSableux[numeroTerrain].RecolterTerrain();
+                        terrainsSableux[numeroTerrain].ArroserTerrain();
                     }
                 }
                 else if (touche2 == '3')
