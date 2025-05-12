@@ -85,9 +85,14 @@ public abstract class Plante
 
     public void Recolter()
     {
-        if (EstVivante && EstMature)
-        {
-            EstMature = false;
-        }
+        if (!EstVivante || !EstMature)
+            return;
+
+        EstMature = false;
+        Production = 0;
+        AjouterAuPanier();
     }
+
+    // Hook pour que chaque plante incremente son propre compteur
+    protected virtual void AjouterAuPanier() { }
 }

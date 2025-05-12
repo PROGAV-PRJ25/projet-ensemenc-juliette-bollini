@@ -267,17 +267,31 @@ while (jour <= nombreDeSemaine * 7) // la boucle while sert à pouvoir effectuer
             Console.WriteLine("\nVous passez au jour suivant.");
             jourEnCours = false;
             jour++;
+            for (int i = 0; i < terrainsSableux.Count; i++)
+            {
+                for (int ii = 0; ii < terrainsSableux[i].Plantes.Count; ii++)
+                {
+                    terrainsSableux[i].Plantes[ii].Croitre(1, 15);
+                }
+            }
+            for (int i = 0; i < terrainsTerre.Count; i++)
+            {
+                for (int ii = 0; ii < terrainsTerre[i].Plantes.Count; ii++)
+                {
+                    terrainsTerre[i].Plantes[ii].Croitre(1, 15);
+                }
+            }
+            for (int i = 0; i < terrainsArgiles.Count; i++)
+            {
+                for (int ii = 0; ii < terrainsArgiles[i].Plantes.Count; ii++)
+                {
+                    terrainsArgiles[i].Plantes[ii].Croitre(1, 15);
+                }
+            }
         }
         else
         {
             Console.WriteLine("\nSaisie invalide. Veuillez appuyer sur une touche valide.");
-        }
-    }
-    for (int i = 0; i < terrainsSableux.Count; i++)
-    {
-        for (int ii = 0; ii < terrainsSableux[i].Plantes.Count; ii++)
-        {
-            terrainsSableux[i].Plantes[ii].Croitre(1, 15);
         }
     }
 }

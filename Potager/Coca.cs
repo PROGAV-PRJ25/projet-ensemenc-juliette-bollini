@@ -1,9 +1,12 @@
 public class Coca : Plante
 {
     private static int _compteur = 0;
+    private static int _totalHarvested = 0;
+    public static int TotalHarvested => _totalHarvested;
 
     public Coca()
     {
+        _compteur++;
         Nom = $"Coca{_compteur}";
         Nature = "Coca";
         SaisonsSemis = new List<Saison> { Saison.Printemps };
@@ -15,5 +18,10 @@ public class Coca : Plante
         TemperatureMin = 18;
         TemperatureMax = 28;
         EsperanceVie = 100;
+    }
+
+    protected override void AjouterAuPanier()
+    {
+        _totalHarvested++;
     }
 }

@@ -2,6 +2,8 @@ public class Pavot : Plante
 {
     // Compteur statique, initialisé à 0 une seule fois pour la classe Pavot
     private static int _compteur = 0;
+    private static int _totalHarvested = 0;
+    public static int TotalHarvested => _totalHarvested;
 
     public Pavot()
     {
@@ -18,5 +20,10 @@ public class Pavot : Plante
         TemperatureMin = 10;
         TemperatureMax = 25;
         EsperanceVie = 90;
+    }
+
+    protected override void AjouterAuPanier()
+    {
+        _totalHarvested++;
     }
 }

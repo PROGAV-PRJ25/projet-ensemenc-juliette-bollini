@@ -1,9 +1,12 @@
 public class Cannabis : Plante
 {
     private static int _compteur = 0;
+    private static int _totalHarvested = 0;
+    public static int TotalHarvested => _totalHarvested;
 
     public Cannabis()
     {
+        _compteur++;
         Nature = "Cannabis";
         Nom = $"Canabis{_compteur}";
         SaisonsSemis = new List<Saison> { Saison.Printemps };
@@ -14,5 +17,10 @@ public class Cannabis : Plante
         TemperatureMin = 15;
         TemperatureMax = 30;
         EsperanceVie = 120;
+    }
+
+    protected override void AjouterAuPanier()
+    {
+        _totalHarvested++;
     }
 }

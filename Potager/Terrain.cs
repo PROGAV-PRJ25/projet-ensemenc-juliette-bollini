@@ -22,4 +22,6 @@ public abstract class Terrain
         Plantes.Add(plante);
         Console.WriteLine($"→ {plante.Nom} planté(e) sur terrain {Nom}.");
     }
+
+    protected virtual void Arroser() { }
 }

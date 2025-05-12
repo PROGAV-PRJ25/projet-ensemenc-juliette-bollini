@@ -9,4 +9,9 @@ public class TerrainArgile : Terrain
         TypeSol = "Argile";
         TeneurEau = 0.9f;
     }
+
+    protected override void Arroser()
+    {
+        TeneurEau = 0.9f;
+    }
 }

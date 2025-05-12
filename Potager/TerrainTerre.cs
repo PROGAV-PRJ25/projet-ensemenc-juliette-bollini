@@ -9,4 +9,9 @@ public class TerrainTerre : Terrain
         TypeSol = "Terre";
         TeneurEau = 0.6f;
     }
+
+    protected override void Arroser()
+    {
+        TeneurEau = 0.6f;
+    }
 }
