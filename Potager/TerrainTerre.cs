@@ -10,7 +10,7 @@ public class TerrainTerre : Terrain
         TeneurEau = 0.6f;
     }
 
-    protected override void ArroserTerrain()
+    public override void ArroserTerrain()
     {
         TeneurEau = 0.6f;
     }

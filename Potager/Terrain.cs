@@ -23,7 +23,7 @@ public abstract class Terrain
         Console.WriteLine($"→ {plante.Nom} planté(e) sur terrain {Nom}.");
     }
 
-    protected virtual void ArroserTerrain() { }
+    public virtual void ArroserTerrain() { }
 
     public virtual void RecolterTerrain()
     {
@@ -33,7 +33,7 @@ public abstract class Terrain
         }
     }
 
-    protected void RatisserTerrain()
+    public void RatisserTerrain()
     {
         for (int i = 0; i < Plantes.Count; i++)
         {
