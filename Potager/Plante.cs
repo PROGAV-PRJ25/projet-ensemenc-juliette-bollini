@@ -96,5 +96,13 @@ public abstract class Plante
     // Hook pour que chaque plante incremente son propre compteur
     protected virtual void AjouterAuPanier() { }
 
-
+    public void TomberMalade()
+    {
+        Random rand = new Random();
+        if (rand.NextDouble() < ProbaTomberMalade)
+        {
+            Console.WriteLine($"La plante {Nom} est affectée par la maladie : {Maladie}");
+            EstMalade = true;
+        }
+    }
 }

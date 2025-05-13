@@ -17,6 +17,7 @@ public class Cannabis : Plante
         TemperatureMin = 15;
         TemperatureMax = 30;
         EsperanceVie = 120;
+        Maladie = "cercosporiose";
     }
 
     protected override void AjouterAuPanier()

@@ -20,6 +20,7 @@ public class Pavot : Plante
         TemperatureMin = 10;
         TemperatureMax = 25;
         EsperanceVie = 90;
+        Maladie = "Rouille";
     }
 
     protected override void AjouterAuPanier()
