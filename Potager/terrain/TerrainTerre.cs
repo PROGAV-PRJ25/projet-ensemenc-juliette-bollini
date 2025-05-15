@@ -7,11 +7,11 @@ public class TerrainTerre : Terrain
         _compteur++;
         Nom = $"Terrain de terre{_compteur}";
         TypeSol = "Terre";
-        TeneurEau = 0.6f;
+        TeneurEau = 100;
     }
 
-    public override void ArroserTerrain()
+    public override void Assecher()
     {
-        TeneurEau = 0.6f;
+        TeneurEau -= 2;
     }
 }

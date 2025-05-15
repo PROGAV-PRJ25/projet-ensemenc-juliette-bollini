@@ -1,4 +1,6 @@
-﻿var semisPavots = new List<Pavot>();
+﻿string meteo = ChangementDeMeteo(0.4, 0.3, 0.3);
+var semisPavots = new List<Pavot>();
+int temperature = ChangementDeTemperature();
 var semisCannabis = new List<Cannabis>();
 var semisCoca = new List<Coca>();
 var terrainsArgiles = new List<TerrainArgile>();
@@ -18,6 +20,8 @@ int jour = 1;
 while (jour <= nombreDeSemaine * 7) // la boucle while sert à pouvoir effectuer plusieurs actions le même jour
 {
     Console.WriteLine($"jour: {jour}");
+    Console.WriteLine($"Le ciel est {meteo}");
+    Console.WriteLine($"la température est de {temperature} degrès celcius");
     bool choixValide = false;
     bool jourEnCours = true; // variable qui change pour changer de jour
 
@@ -500,31 +504,65 @@ while (jour <= nombreDeSemaine * 7) // la boucle while sert à pouvoir effectuer
             );
             jourEnCours = false;
             jour++;
+            temperature = ChangementDeTemperature();
+            meteo = ChangementDeMeteo(0.4, 0.3, 0.3);
             for (int i = 0; i < terrainsSableux.Count; i++)
             {
                 for (int ii = 0; ii < terrainsSableux[i].Plantes.Count; ii++)
                 {
-                    terrainsSableux[i].Plantes[ii].Croitre(1, 15);
+                    terrainsSableux[i]
+                        .Plantes[ii]
+                        .Croitre(terrainsSableux[i].TeneurEau, temperature, meteo);
                 }
+                terrainsSableux[i].Assecher();
             }
             for (int i = 0; i < terrainsTerre.Count; i++)
             {
                 for (int ii = 0; ii < terrainsTerre[i].Plantes.Count; ii++)
                 {
-                    terrainsTerre[i].Plantes[ii].Croitre(1, 15);
+                    terrainsTerre[i]
+                        .Plantes[ii]
+                        .Croitre(terrainsTerre[i].TeneurEau, temperature, meteo);
                 }
+                terrainsTerre[i].Assecher();
             }
             for (int i = 0; i < terrainsArgiles.Count; i++)
             {
                 for (int ii = 0; ii < terrainsArgiles[i].Plantes.Count; ii++)
                 {
-                    terrainsArgiles[i].Plantes[ii].Croitre(1, 15);
+                    terrainsArgiles[i]
+                        .Plantes[ii]
+                        .Croitre(terrainsArgiles[i].TeneurEau, temperature, meteo);
                 }
+                terrainsArgiles[i].Assecher();
             }
         }
         else
         {
             Console.WriteLine("\nSaisie invalide. Veuillez appuyer sur une touche valide.");
         }
+    }
+}
+int ChangementDeTemperature()
+{
+    Random rnd = new Random();
+    return rnd.Next(18, 25);
+}
+string ChangementDeMeteo(double probaEnsoleiller, double probaNuageux, double probapluvieux)
+{
+    Random rnd = new Random();
+    double tirage = rnd.NextDouble();
+
+    if (tirage < probaEnsoleiller)
+    {
+        return "ensoleiller";
+    }
+    else if (tirage < probaEnsoleiller + probaNuageux)
+    {
+        return "nuageux";
+    }
+    else
+    {
+        return "pluvieux";
     }
 }
