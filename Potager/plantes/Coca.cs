@@ -19,6 +19,7 @@ public class Coca : Plante
         TemperatureMax = 28;
         EsperanceVie = 100;
         Maladie = "Botrytis";
+        ProbaTomberMalade = 0.01;
     }
 
     protected override void AjouterAuPanier()
