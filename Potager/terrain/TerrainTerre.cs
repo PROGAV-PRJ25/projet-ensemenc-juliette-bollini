@@ -12,6 +12,6 @@ public class TerrainTerre : Terrain
 
     public override void Assecher()
     {
-        TeneurEau -= 2;
+        TeneurEau -= 2 * Plantes.Count;
     }
 }

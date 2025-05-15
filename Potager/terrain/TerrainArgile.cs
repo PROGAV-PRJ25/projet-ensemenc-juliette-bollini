@@ -12,6 +12,6 @@ public class TerrainArgile : Terrain
 
     public override void Assecher()
     {
-        TeneurEau -= 1;
+        TeneurEau -= 1 * Plantes.Count;
     }
 }

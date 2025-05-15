@@ -12,6 +12,6 @@ public class TerrainSableux : Terrain
 
     public override void Assecher()
     {
-        TeneurEau -= 3;
+        TeneurEau -= 3 * Plantes.Count;
     }
 }

@@ -543,6 +543,8 @@ while (jour <= nombreDeSemaine * 7) // la boucle while sert à pouvoir effectuer
         }
     }
 }
+
+
 int ChangementDeTemperature()
 {
     Random rnd = new Random();
