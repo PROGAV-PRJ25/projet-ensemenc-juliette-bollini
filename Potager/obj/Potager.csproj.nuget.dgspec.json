@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Schneider\\Desktop\\1A\\prog av\\projetjuju\\projet-ensemenc-juliette-bollini\\Potager\\Potager.csproj": {}
+    "C:\\Users\\PC\\Documents\\ENSC\\Projets\\ENSemenC\\projet-ensemenc-juliette-bollini\\Potager\\Potager.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Schneider\\Desktop\\1A\\prog av\\projetjuju\\projet-ensemenc-juliette-bollini\\Potager\\Potager.csproj": {
+    "C:\\Users\\PC\\Documents\\ENSC\\Projets\\ENSemenC\\projet-ensemenc-juliette-bollini\\Potager\\Potager.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Schneider\\Desktop\\1A\\prog av\\projetjuju\\projet-ensemenc-juliette-bollini\\Potager\\Potager.csproj",
+        "projectUniqueName": "C:\\Users\\PC\\Documents\\ENSC\\Projets\\ENSemenC\\projet-ensemenc-juliette-bollini\\Potager\\Potager.csproj",
         "projectName": "Potager",
-        "projectPath": "C:\\Users\\Schneider\\Desktop\\1A\\prog av\\projetjuju\\projet-ensemenc-juliette-bollini\\Potager\\Potager.csproj",
-        "packagesPath": "C:\\Users\\Schneider\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Schneider\\Desktop\\1A\\prog av\\projetjuju\\projet-ensemenc-juliette-bollini\\Potager\\obj\\",
+        "projectPath": "C:\\Users\\PC\\Documents\\ENSC\\Projets\\ENSemenC\\projet-ensemenc-juliette-bollini\\Potager\\Potager.csproj",
+        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\PC\\Documents\\ENSC\\Projets\\ENSemenC\\projet-ensemenc-juliette-bollini\\Potager\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Schneider\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
