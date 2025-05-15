@@ -21,6 +21,7 @@ public class Pavot : Plante
         TemperatureMax = 25;
         EsperanceVie = 90;
         Maladie = "Rouille";
+        ProbaTomberMalade = 0.01;
     }
 
     protected override void AjouterAuPanier()

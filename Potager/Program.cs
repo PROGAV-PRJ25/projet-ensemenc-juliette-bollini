@@ -534,6 +534,7 @@ while (jour <= nombreDeSemaine * 7) // la boucle while sert à pouvoir effectuer
                     terrainsSableux[i]
                         .Plantes[ii]
                         .Croitre(terrainsSableux[i].TeneurEau, temperature, meteo);
+                    terrainsSableux[i].Plantes[ii].TomberMalade();
                 }
                 terrainsSableux[i].Assecher();
             }
@@ -544,6 +545,7 @@ while (jour <= nombreDeSemaine * 7) // la boucle while sert à pouvoir effectuer
                     terrainsTerre[i]
                         .Plantes[ii]
                         .Croitre(terrainsTerre[i].TeneurEau, temperature, meteo);
+                    terrainsTerre[i].Plantes[ii].TomberMalade();
                 }
                 terrainsTerre[i].Assecher();
             }
@@ -554,6 +556,7 @@ while (jour <= nombreDeSemaine * 7) // la boucle while sert à pouvoir effectuer
                     terrainsArgiles[i]
                         .Plantes[ii]
                         .Croitre(terrainsArgiles[i].TeneurEau, temperature, meteo);
+                    terrainsArgiles[i].Plantes[ii].TomberMalade();
                 }
                 terrainsArgiles[i].Assecher();
             }
@@ -564,7 +567,6 @@ while (jour <= nombreDeSemaine * 7) // la boucle while sert à pouvoir effectuer
         }
     }
 }
-
 
 int ChangementDeTemperature()
 {

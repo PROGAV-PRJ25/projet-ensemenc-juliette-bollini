@@ -49,7 +49,7 @@ public abstract class Plante
             return;
 
         // 2) Calcul des facteurs eau et température
-        double fe = Math.Min(eauDispo / BesoinsEau, 1.0);
+        double fe = Math.Min(eauDispo / BesoinsEau * 100, 1.0);
 
         double fm = 1;
 
