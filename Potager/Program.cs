@@ -11,6 +11,7 @@ terrainsSableux.Add(new TerrainSableux());
 terrainsTerre.Add(new TerrainTerre());
 
 affichage.AfficherDebut();
+
 Console.WriteLine("combien de semaine voulez vous jouer?");
 nombreDeSemaine = int.Parse(Console.ReadLine()!);
 
@@ -492,7 +493,18 @@ while (jour <= nombreDeSemaine * 7) // la boucle while sert à pouvoir effectuer
                 }
             }
         }
-        else if (touche == '5') // Passer au jour suivant
+        else if (touche == '5')
+        {
+            Console.WriteLine("\nVous avez décider de visualiser tous vos terrains.");
+            affichage.AfficherTousLesTerrainsAvecNavigation(
+                terrainsTerre
+                    .Cast<Terrain>()
+                    .Concat(terrainsArgiles)
+                    .Concat(terrainsSableux)
+                    .ToList()
+            );
+        }
+        else if (touche == '6') // Passer au jour suivant
         {
             Console.WriteLine("\nVous passez au jour suivant.");
             Console.WriteLine(
