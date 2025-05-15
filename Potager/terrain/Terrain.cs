@@ -7,7 +7,7 @@ public abstract class Terrain
     public string TypeSol { get; set; }
 
     // Pourcentage d'eau retenue dans le sol (0 à 1)
-    public float TeneurEau { get; set; }
+    public int TeneurEau { get; set; }
 
     // Liste des plantes plantées sur ce terrain
     public List<Plante> Plantes { get; set; }
@@ -23,7 +23,10 @@ public abstract class Terrain
         Console.WriteLine($"→ {plante.Nom} planté(e) sur terrain {Nom}.");
     }
 
-    public virtual void ArroserTerrain() { }
+    public void ArroserTerrain()
+    {
+        TeneurEau = 100;
+    }
 
     public virtual void RecolterTerrain()
     {
@@ -43,4 +46,6 @@ public abstract class Terrain
             }
         }
     }
+
+    public virtual void Assecher() { }
 }

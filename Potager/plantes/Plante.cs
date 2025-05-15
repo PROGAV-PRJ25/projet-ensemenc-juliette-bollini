@@ -42,7 +42,7 @@ public abstract class Plante
         return "";
     }
 
-    public void Croitre(double eauDispo, double temperature)
+    public void Croitre(double eauDispo, double temperature, string meteo)
     {
         // 1) On ne croît que si la saison est bonne et si la plante est vivante
         if (!EstVivante)
@@ -50,13 +50,32 @@ public abstract class Plante
 
         // 2) Calcul des facteurs eau et température
         double fe = Math.Min(eauDispo / BesoinsEau, 1.0);
-        // double fl = Math.Min(lumDispo / BesoinsLuminausite, 1.0);
-        double ft = (temperature < TemperatureMin || temperature > TemperatureMax) ? 0.5 : 1.0;
 
+        double fm = 1;
+
+        if (meteo == "ensoleiller")
+        {
+            fm = 1;
+            temperature += 2;
+        }
+        else if (meteo == "nuageux")
+        {
+            fm = 0.7;
+        }
+        else if (meteo == "pluvieux")
+        {
+            temperature -= 2;
+            fm = 0.5;
+        }
+        double ft = (temperature < TemperatureMin || temperature > TemperatureMax) ? 0.5 : 1.0;
         // 3) Incrémenter âge et production
-        double delta = VitesseDeCroissance * fe * ft; //fl
+        double delta = VitesseDeCroissance * fe * ft * fm; //fl
         Age += 1;
         Production += delta;
+        if (EstMalade)
+        {
+            Production -= 0.1;
+        }
         if (Production >= 1 && !EstMature)
         {
             EstMature = true;
@@ -66,20 +85,6 @@ public abstract class Plante
         if (Age >= EsperanceVie)
         {
             EstVivante = false;
-        }
-    }
-
-    public void DevenirMalade()
-    {
-        Random rand = new Random();
-        if (rand.NextDouble() < ProbaTomberMalade)
-        {
-            Console.WriteLine($"La plante {Nom} est affectée par la maladie : {Maladie}");
-            EstMalade = true;
-        }
-        else
-        {
-            Console.WriteLine($"La plante {Nom} résiste à la maladie {Maladie}");
         }
     }
 
