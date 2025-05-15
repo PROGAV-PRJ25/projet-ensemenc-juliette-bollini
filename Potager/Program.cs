@@ -6,6 +6,7 @@ var semisCoca = new List<Coca>();
 var terrainsArgiles = new List<TerrainArgile>();
 var terrainsTerre = new List<TerrainTerre>();
 var terrainsSableux = new List<TerrainSableux>();
+var boutique = new Boutique();
 int nombreDeSemaine;
 var affichage = new Affichage();
 terrainsArgiles.Add(new TerrainArgile());
@@ -508,12 +509,20 @@ while (jour <= nombreDeSemaine * 7) // la boucle while sert à pouvoir effectuer
                     .ToList()
             );
         }
-        else if (touche == '6') // Passer au jour suivant
+        else if (touche == '6') // Boutique
+        {
+            Console.WriteLine(
+                $"\n-Vous avez dans votre stock {Pavot.TotalHarvested} de Pavot \n-Vous avez dans votre stock {Cannabis.TotalHarvested} de Cannabis \n-Vous avez dans votre stock {Coca.TotalHarvested} de Cocaïne"
+            );
+            boutique.VendreTout();
+        }
+        else if (touche == '7') // Passer au jour suivant
         {
             Console.WriteLine("\nVous passez au jour suivant.");
             Console.WriteLine(
                 $"\n-Vous avez dans votre stock {Pavot.TotalHarvested} de Pavot \n-Vous avez dans votre stock {Cannabis.TotalHarvested} de Cannabis \n-Vous avez dans votre stock {Coca.TotalHarvested} de Cocaïne"
             );
+            boutique.AfficherArgent();
             jourEnCours = false;
             jour++;
             temperature = ChangementDeTemperature();

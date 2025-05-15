@@ -31,8 +31,8 @@ public class Affichage
         Console.WriteLine("3. Récolter");
         Console.WriteLine("4. Ratisser");
         Console.WriteLine("5. Regarder mes terrains ");
-
-        Console.WriteLine("6. Fini ");
+        Console.WriteLine("6. Boutique ");
+        Console.WriteLine("7. Fini ");
     }
 
     public void AfficherAlerte(string message) // voir pour le type de message entre alerte
