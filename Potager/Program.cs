@@ -37,216 +37,224 @@ while (jour <= nombreDeSemaine * 7) // la boucle while sert à pouvoir effectuer
 
         if (touche == '1')
         {
-            Console.WriteLine("\nVous avez choisi de planter un semis !");
-            choixValide = true;
-            bool choix2Valide = false;
-
-            while (!choix2Valide)
+            if (boutique.Argent >= 1)
             {
-                Console.WriteLine("sur quel type de terrain voulez vous planter?");
-                Console.WriteLine("1)Terre 2)Sable 3)Argile");
+                Console.WriteLine("\nVous avez choisi de planter un semis !");
+                choixValide = true;
+                bool choix2Valide = false;
 
-                ConsoleKeyInfo keyInfo2 = Console.ReadKey(intercept: true); // ne pas afficher la touche
-                char touche2 = keyInfo2.KeyChar;
-                if (touche2 == '1')
+                while (!choix2Valide)
                 {
-                    Console.WriteLine("\nVous avez choisi Terre!");
-                    choix2Valide = true;
-                    Console.WriteLine("Sur le quel voulez vous planter?");
-                    int numeroTerrain;
-                    for (int i = 1; i <= terrainsTerre.Count; i++)
-                    {
-                        Console.Write($"{i}){terrainsTerre[i - 1].Nom} ");
-                    }
-                    Console.WriteLine("\nchoisissez puis entrer");
-                    numeroTerrain = int.Parse(Console.ReadLine()!) - 1;
-                    if (terrainsTerre[numeroTerrain].Place > 0)
-                    {
-                        Console.WriteLine(
-                            $"Vous avez décidé de planter sur {terrainsTerre[numeroTerrain].Nom}"
-                        );
-                        bool choix3Valide = false;
+                    Console.WriteLine("sur quel type de terrain voulez vous planter?");
+                    Console.WriteLine("1)Terre 2)Sable 3)Argile");
 
-                        while (!choix3Valide)
+                    ConsoleKeyInfo keyInfo2 = Console.ReadKey(intercept: true); // ne pas afficher la touche
+                    char touche2 = keyInfo2.KeyChar;
+                    if (touche2 == '1')
+                    {
+                        Console.WriteLine("\nVous avez choisi Terre!");
+                        choix2Valide = true;
+                        Console.WriteLine("Sur le quel voulez vous planter?");
+                        int numeroTerrain;
+                        for (int i = 1; i <= terrainsTerre.Count; i++)
                         {
-                            Console.WriteLine("Quelle type de plante voulez vous planter?");
-                            Console.Write("1)Coca 2)Canabis 3)Pavot");
+                            Console.Write($"{i}){terrainsTerre[i - 1].Nom} ");
+                        }
+                        Console.WriteLine("\nchoisissez puis entrer");
+                        numeroTerrain = int.Parse(Console.ReadLine()!) - 1;
+                        if (terrainsTerre[numeroTerrain].Place > 0)
+                        {
+                            Console.WriteLine(
+                                $"Vous avez décidé de planter sur {terrainsTerre[numeroTerrain].Nom}"
+                            );
+                            bool choix3Valide = false;
 
-                            ConsoleKeyInfo keyInfo3 = Console.ReadKey(intercept: true); // ne pas afficher la touche
-                            char touche3 = keyInfo3.KeyChar;
+                            while (!choix3Valide)
+                            {
+                                Console.WriteLine("Quelle type de plante voulez vous planter?");
+                                Console.Write("1)Coca 2)Canabis 3)Pavot");
 
-                            if (touche3 == '1')
-                            {
-                                Console.WriteLine("\nVous avez choisi de planter de la Coca");
-                                choix3Valide = true;
-                                semisCoca.Add(new Coca());
-                                terrainsTerre[numeroTerrain].AjouterPlante(semisCoca[0]);
-                                semisCoca.RemoveAt(0);
-                                affichage.AfficherTerrain(terrainsTerre[numeroTerrain]);
+                                ConsoleKeyInfo keyInfo3 = Console.ReadKey(intercept: true); // ne pas afficher la touche
+                                char touche3 = keyInfo3.KeyChar;
+
+                                if (touche3 == '1')
+                                {
+                                    Console.WriteLine("\nVous avez choisi de planter de la Coca");
+                                    choix3Valide = true;
+                                    semisCoca.Add(new Coca());
+                                    terrainsTerre[numeroTerrain].AjouterPlante(semisCoca[0]);
+                                    semisCoca.RemoveAt(0);
+                                    affichage.AfficherTerrain(terrainsTerre[numeroTerrain]);
+                                }
+                                else if (touche3 == '2')
+                                {
+                                    Console.WriteLine("\nVous avez choisi de planter du Canabis");
+                                    choix3Valide = true;
+                                    semisCannabis.Add(new Cannabis());
+                                    terrainsTerre[numeroTerrain].AjouterPlante(semisCannabis[0]);
+                                    semisCannabis.RemoveAt(0);
+                                    affichage.AfficherTerrain(terrainsTerre[numeroTerrain]);
+                                }
+                                else if (touche3 == '3')
+                                {
+                                    Console.WriteLine("\nVous avez choisi de planter du Pavot");
+                                    choix3Valide = true;
+                                    semisPavots.Add(new Pavot());
+                                    terrainsTerre[numeroTerrain].AjouterPlante(semisPavots[0]);
+                                    semisPavots.RemoveAt(0);
+                                    affichage.AfficherTerrain(terrainsTerre[numeroTerrain]);
+                                }
+                                else
+                                {
+                                    Console.WriteLine("\nSaisie invalide.");
+                                }
                             }
-                            else if (touche3 == '2')
+                        }
+                        else
+                        {
+                            Console.WriteLine("il n'y a plus de place dans ce terrain");
+                        }
+                    }
+                    else if (touche2 == '2')
+                    {
+                        Console.WriteLine("\nVous avez choisi Sable");
+                        choix2Valide = true;
+                        Console.WriteLine("Sur le quel voulez vous planter?");
+                        int numeroTerrain;
+                        for (int i = 1; i <= terrainsSableux.Count; i++)
+                        {
+                            Console.Write($"{i}){terrainsSableux[i - 1].Nom} ");
+                        }
+                        Console.WriteLine("\nchoisissez puis entrer");
+                        numeroTerrain = int.Parse(Console.ReadLine()!) - 1;
+                        if (terrainsSableux[numeroTerrain].Place > 0)
+                        {
+                            Console.WriteLine(
+                                $"Vous avez décidé de planter sur {terrainsSableux[numeroTerrain].Nom}"
+                            );
+                            bool choix3Valide = false;
+
+                            while (!choix3Valide)
                             {
-                                Console.WriteLine("\nVous avez choisi de planter du Canabis");
-                                choix3Valide = true;
-                                semisCannabis.Add(new Cannabis());
-                                terrainsTerre[numeroTerrain].AjouterPlante(semisCannabis[0]);
-                                semisCannabis.RemoveAt(0);
-                                affichage.AfficherTerrain(terrainsTerre[numeroTerrain]);
+                                Console.WriteLine("Quelle type de plante voulez vous planter?");
+                                Console.Write("1)Coca 2)Canabis 3)Pavot");
+
+                                ConsoleKeyInfo keyInfo3 = Console.ReadKey(intercept: true); // ne pas afficher la touche
+                                char touche3 = keyInfo3.KeyChar;
+
+                                if (touche3 == '1')
+                                {
+                                    Console.WriteLine("\nVous avez choisi de planter de ma Coca");
+                                    choix3Valide = true;
+                                    semisCoca.Add(new Coca());
+                                    terrainsSableux[numeroTerrain].AjouterPlante(semisCoca[0]);
+                                    semisCoca.RemoveAt(0);
+                                    affichage.AfficherTerrain(terrainsSableux[numeroTerrain]);
+                                }
+                                else if (touche3 == '2')
+                                {
+                                    Console.WriteLine("\nVous avez choisi de planter du Canabis");
+                                    choix3Valide = true;
+                                    semisCannabis.Add(new Cannabis());
+                                    terrainsSableux[numeroTerrain].AjouterPlante(semisCannabis[0]);
+                                    semisCannabis.RemoveAt(0);
+                                    affichage.AfficherTerrain(terrainsSableux[numeroTerrain]);
+                                }
+                                else if (touche3 == '3')
+                                {
+                                    Console.WriteLine("\nVous avez choisi de planter du Pavot");
+                                    choix3Valide = true;
+                                    semisPavots.Add(new Pavot());
+                                    terrainsSableux[numeroTerrain].AjouterPlante(semisPavots[0]);
+                                    semisPavots.RemoveAt(0);
+                                    affichage.AfficherTerrain(terrainsSableux[numeroTerrain]);
+                                }
+                                else
+                                {
+                                    Console.WriteLine("\nSaisie invalide.");
+                                }
                             }
-                            else if (touche3 == '3')
+                        }
+                        else
+                        {
+                            Console.WriteLine("il n'y a plus de place dans ce terrain");
+                        }
+                    }
+                    else if (touche2 == '3')
+                    {
+                        Console.WriteLine("\nVous avez choisi Argile");
+                        choix2Valide = true;
+                        Console.WriteLine("Sur le quel voulez vous planter?");
+                        int numeroTerrain;
+                        for (int i = 1; i <= terrainsArgiles.Count; i++)
+                        {
+                            Console.Write($"{i}){terrainsArgiles[i - 1].Nom} ");
+                        }
+                        Console.WriteLine("\nchoisissez puis entrer");
+                        numeroTerrain = int.Parse(Console.ReadLine()!) - 1;
+                        if (terrainsArgiles[numeroTerrain].Place > 0)
+                        {
+                            Console.WriteLine(
+                                $"Vous avez décidé de planter sur {terrainsArgiles[numeroTerrain].Nom}"
+                            );
+                            bool choix3Valide = false;
+
+                            while (!choix3Valide)
                             {
-                                Console.WriteLine("\nVous avez choisi de planter du Pavot");
-                                choix3Valide = true;
-                                semisPavots.Add(new Pavot());
-                                terrainsTerre[numeroTerrain].AjouterPlante(semisPavots[0]);
-                                semisPavots.RemoveAt(0);
-                                affichage.AfficherTerrain(terrainsTerre[numeroTerrain]);
+                                Console.WriteLine("Quelle type de plante voulez vous planter?");
+                                Console.Write("1)Coca 2)Canabis 3)Pavot");
+
+                                ConsoleKeyInfo keyInfo3 = Console.ReadKey(intercept: true); // ne pas afficher la touche
+                                char touche3 = keyInfo3.KeyChar;
+
+                                if (touche3 == '1')
+                                {
+                                    Console.WriteLine("\nVous avez choisi de planter de ma Coca");
+                                    choix3Valide = true;
+                                    semisCoca.Add(new Coca());
+                                    terrainsArgiles[numeroTerrain].AjouterPlante(semisCoca[0]);
+                                    semisCoca.RemoveAt(0);
+                                    affichage.AfficherTerrain(terrainsArgiles[numeroTerrain]);
+                                }
+                                else if (touche3 == '2')
+                                {
+                                    Console.WriteLine("\nVous avez choisi de planter du Canabis");
+                                    choix3Valide = true;
+                                    semisCannabis.Add(new Cannabis());
+                                    terrainsArgiles[numeroTerrain].AjouterPlante(semisCannabis[0]);
+                                    semisCannabis.RemoveAt(0);
+                                    affichage.AfficherTerrain(terrainsArgiles[numeroTerrain]);
+                                }
+                                else if (touche3 == '3')
+                                {
+                                    Console.WriteLine("\nVous avez choisi de planter du Pavot");
+                                    choix3Valide = true;
+                                    semisPavots.Add(new Pavot());
+                                    terrainsArgiles[numeroTerrain].AjouterPlante(semisPavots[0]);
+                                    semisPavots.RemoveAt(0);
+                                    affichage.AfficherTerrain(terrainsArgiles[numeroTerrain]);
+                                }
+                                else
+                                {
+                                    Console.WriteLine("\nSaisie invalide.");
+                                }
                             }
-                            else
-                            {
-                                Console.WriteLine("\nSaisie invalide.");
-                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("il n'y a plus de place dans ce terrain");
                         }
                     }
                     else
                     {
-                        Console.WriteLine("il n'y a plus de place dans ce terrain");
+                        Console.WriteLine("\nSaisie invalide.");
                     }
                 }
-                else if (touche2 == '2')
-                {
-                    Console.WriteLine("\nVous avez choisi Sable");
-                    choix2Valide = true;
-                    Console.WriteLine("Sur le quel voulez vous planter?");
-                    int numeroTerrain;
-                    for (int i = 1; i <= terrainsSableux.Count; i++)
-                    {
-                        Console.Write($"{i}){terrainsSableux[i - 1].Nom} ");
-                    }
-                    Console.WriteLine("\nchoisissez puis entrer");
-                    numeroTerrain = int.Parse(Console.ReadLine()!) - 1;
-                    if (terrainsSableux[numeroTerrain].Place > 0)
-                    {
-                        Console.WriteLine(
-                            $"Vous avez décidé de planter sur {terrainsSableux[numeroTerrain].Nom}"
-                        );
-                        bool choix3Valide = false;
-
-                        while (!choix3Valide)
-                        {
-                            Console.WriteLine("Quelle type de plante voulez vous planter?");
-                            Console.Write("1)Coca 2)Canabis 3)Pavot");
-
-                            ConsoleKeyInfo keyInfo3 = Console.ReadKey(intercept: true); // ne pas afficher la touche
-                            char touche3 = keyInfo3.KeyChar;
-
-                            if (touche3 == '1')
-                            {
-                                Console.WriteLine("\nVous avez choisi de planter de ma Coca");
-                                choix3Valide = true;
-                                semisCoca.Add(new Coca());
-                                terrainsSableux[numeroTerrain].AjouterPlante(semisCoca[0]);
-                                semisCoca.RemoveAt(0);
-                                affichage.AfficherTerrain(terrainsSableux[numeroTerrain]);
-                            }
-                            else if (touche3 == '2')
-                            {
-                                Console.WriteLine("\nVous avez choisi de planter du Canabis");
-                                choix3Valide = true;
-                                semisCannabis.Add(new Cannabis());
-                                terrainsSableux[numeroTerrain].AjouterPlante(semisCannabis[0]);
-                                semisCannabis.RemoveAt(0);
-                                affichage.AfficherTerrain(terrainsSableux[numeroTerrain]);
-                            }
-                            else if (touche3 == '3')
-                            {
-                                Console.WriteLine("\nVous avez choisi de planter du Pavot");
-                                choix3Valide = true;
-                                semisPavots.Add(new Pavot());
-                                terrainsSableux[numeroTerrain].AjouterPlante(semisPavots[0]);
-                                semisPavots.RemoveAt(0);
-                                affichage.AfficherTerrain(terrainsSableux[numeroTerrain]);
-                            }
-                            else
-                            {
-                                Console.WriteLine("\nSaisie invalide.");
-                            }
-                        }
-                    }
-                    else
-                    {
-                        Console.WriteLine("il n'y a plus de place dans ce terrain");
-                    }
-                }
-                else if (touche2 == '3')
-                {
-                    Console.WriteLine("\nVous avez choisi Argile");
-                    choix2Valide = true;
-                    Console.WriteLine("Sur le quel voulez vous planter?");
-                    int numeroTerrain;
-                    for (int i = 1; i <= terrainsArgiles.Count; i++)
-                    {
-                        Console.Write($"{i}){terrainsArgiles[i - 1].Nom} ");
-                    }
-                    Console.WriteLine("\nchoisissez puis entrer");
-                    numeroTerrain = int.Parse(Console.ReadLine()!) - 1;
-                    if (terrainsArgiles[numeroTerrain].Place > 0)
-                    {
-                        Console.WriteLine(
-                            $"Vous avez décidé de planter sur {terrainsArgiles[numeroTerrain].Nom}"
-                        );
-                        bool choix3Valide = false;
-
-                        while (!choix3Valide)
-                        {
-                            Console.WriteLine("Quelle type de plante voulez vous planter?");
-                            Console.Write("1)Coca 2)Canabis 3)Pavot");
-
-                            ConsoleKeyInfo keyInfo3 = Console.ReadKey(intercept: true); // ne pas afficher la touche
-                            char touche3 = keyInfo3.KeyChar;
-
-                            if (touche3 == '1')
-                            {
-                                Console.WriteLine("\nVous avez choisi de planter de ma Coca");
-                                choix3Valide = true;
-                                semisCoca.Add(new Coca());
-                                terrainsArgiles[numeroTerrain].AjouterPlante(semisCoca[0]);
-                                semisCoca.RemoveAt(0);
-                                affichage.AfficherTerrain(terrainsArgiles[numeroTerrain]);
-                            }
-                            else if (touche3 == '2')
-                            {
-                                Console.WriteLine("\nVous avez choisi de planter du Canabis");
-                                choix3Valide = true;
-                                semisCannabis.Add(new Cannabis());
-                                terrainsArgiles[numeroTerrain].AjouterPlante(semisCannabis[0]);
-                                semisCannabis.RemoveAt(0);
-                                affichage.AfficherTerrain(terrainsArgiles[numeroTerrain]);
-                            }
-                            else if (touche3 == '3')
-                            {
-                                Console.WriteLine("\nVous avez choisi de planter du Pavot");
-                                choix3Valide = true;
-                                semisPavots.Add(new Pavot());
-                                terrainsArgiles[numeroTerrain].AjouterPlante(semisPavots[0]);
-                                semisPavots.RemoveAt(0);
-                                affichage.AfficherTerrain(terrainsArgiles[numeroTerrain]);
-                            }
-                            else
-                            {
-                                Console.WriteLine("\nSaisie invalide.");
-                            }
-                        }
-                    }
-                    else
-                    {
-                        Console.WriteLine("il n'y a plus de place dans ce terrain");
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("\nSaisie invalide.");
-                }
+                boutique.Argent--;
+            }
+            else
+            {
+                Console.WriteLine("Vous n'avez pas asser d'argent pour achetter un semis");
             }
         }
         else if (touche == '2') //Arroser

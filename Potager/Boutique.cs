@@ -1,6 +1,6 @@
 public class Boutique
 {
-    public int Argent { get; private set; }
+    public int Argent { get; set; }
 
     public Boutique()
     {
