@@ -42,7 +42,7 @@ public class Affichage
         Console.ResetColor();
     }
 
-    public void AfficherTerrain(Terrain terrain)
+    public void AfficherTerrain(Terrain terrain) //Affichage du terrain après une modification 
     {
         int lignes = 3;
         int colonnes = 3;
@@ -81,7 +81,7 @@ public class Affichage
         AfficherJaugeEau(terrain.TeneurEau);
     }
 
-    public void AfficherTousLesTerrainsAvecNavigation(List<Terrain> tousLesTerrains)
+    public void AfficherTousLesTerrainsAvecNavigation(List<Terrain> tousLesTerrains) //Navigation entre les terrains avec les flèches du clavier
     {
         int index = 0;
         ConsoleKey key;
@@ -105,7 +105,7 @@ public class Affichage
         } while (key != ConsoleKey.Escape);
     }
 
-    public void AfficherJaugeEau(float pourcentage)
+    public void AfficherJaugeEau(float pourcentage) //Affiche la jauge d'eau du terrain afin de ne pas en manquer
     {
         int tailleTotale = 10;
         int remplis = (int)Math.Round((pourcentage * tailleTotale) / 100);

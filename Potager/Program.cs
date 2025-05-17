@@ -1,6 +1,4 @@
-﻿string meteo = ChangementDeMeteo(0.4, 0.3, 0.3);
-var semisPavots = new List<Pavot>();
-int temperature = ChangementDeTemperature();
+﻿var semisPavots = new List<Pavot>();
 var semisCannabis = new List<Cannabis>();
 var semisCoca = new List<Coca>();
 var terrainsArgiles = new List<TerrainArgile>();
@@ -12,7 +10,8 @@ var affichage = new Affichage();
 terrainsArgiles.Add(new TerrainArgile());
 terrainsSableux.Add(new TerrainSableux());
 terrainsTerre.Add(new TerrainTerre());
-
+string meteo = ChangementDeMeteo(0.4, 0.3, 0.3);
+int temperature = ChangementDeTemperature();
 affichage.AfficherDebut();
 
 Console.WriteLine("combien de semaine voulez vous jouer?");
@@ -23,7 +22,7 @@ while (jour <= nombreDeSemaine * 7) // la boucle while sert à pouvoir effectuer
 {
     Console.WriteLine($"jour: {jour}");
     Console.WriteLine($"Le ciel est {meteo}");
-    Console.WriteLine($"la température est de {temperature} degrès celcius");
+    Console.WriteLine($"la température est de {temperature} °C");
     bool choixValide = false;
     bool jourEnCours = true; // variable qui change pour changer de jour
 
@@ -567,7 +566,6 @@ while (jour <= nombreDeSemaine * 7) // la boucle while sert à pouvoir effectuer
         }
     }
 }
-
 int ChangementDeTemperature()
 {
     Random rnd = new Random();
