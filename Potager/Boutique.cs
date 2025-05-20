@@ -55,4 +55,5 @@ public class Boutique
     {
         Console.WriteLine($"\n💸 Argent actuel : {Argent}€");
     }
+
 }
