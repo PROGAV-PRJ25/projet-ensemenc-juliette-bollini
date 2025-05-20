@@ -25,6 +25,7 @@ public class Cannabis : Plante
     {
         _totalHarvested++;
     }
+
     public static void ResetCompteur()
     {
         _totalHarvested = 0;
