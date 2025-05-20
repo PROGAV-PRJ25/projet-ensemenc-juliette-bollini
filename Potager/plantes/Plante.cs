@@ -25,23 +25,29 @@ public abstract class Plante
 
     public string GetSymbole(bool clignote = false)
     {
-        if (Nature == null)
-            return ""; // Sol vide
-        if (EstVivante == false)
+        if (!EstVivante)
             return "💀";
-        if (clignote && EstMalade)
-            return "💊"; // Symbole médicament
-        else if (EstMature == false)
+
+        if (EstMalade)
+        {
+            return clignote ? "💊" : GetSymboleNormal(); // alterne uniquement si malade
+        }
+
+        return GetSymboleNormal(); // stable si pas malade
+    }
+
+    private string GetSymboleNormal()
+    {
+        if (!EstMature)
             return "🌱";
-        else if (Nature == "Cannabis") //comme les noms des plantes seront associées à un numéro le contains parait nécessaire
-            return "🌿";
-        else if (Nature == "Pavot" && EstMature == true)
-            return "🌸";
-        else if (Nature == "Coca" && EstMature == true)
-            return "🌵";
-        else
-            Console.WriteLine("cette plante n'existe pas dans le jeu ");
-        return "";
+
+        return Nature switch
+        {
+            "Cannabis" => "🌿",
+            "Pavot" => "🌸",
+            "Coca" => "🌵",
+            _ => "❓",
+        };
     }
 
     public void Croitre(double eauDispo, double temperature, string meteo)
@@ -55,7 +61,7 @@ public abstract class Plante
 
         double fm = 1;
 
-        if (meteo == "ensoleiller")
+        if (meteo == "ensoleillé")
         {
             fm = 1;
             temperature += 2;
@@ -81,7 +87,7 @@ public abstract class Plante
         if (Production >= 1 && !EstMature)
         {
             EstMature = true;
-            Console.WriteLine($"la plante {Nom} a atteint ça maturitée");
+            Console.WriteLine($"la plante {Nom} a atteint sa maturité");
         }
         // 4) Si on dépasse l'espérance de vie, la plante meurt
         if (Age >= EsperanceVie)

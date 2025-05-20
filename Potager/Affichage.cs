@@ -38,7 +38,7 @@ public class Affichage
         }
         else
         {
-            Console.WriteLine("7. Passer en mode rapide (semain par semain) ");
+            Console.WriteLine("7. Passer en mode rapide (semaine par semaine) ");
         }
         Console.WriteLine("8. Fini ");
     }
@@ -89,34 +89,80 @@ public class Affichage
         AfficherJaugeEau(terrain.TeneurEau);
     }
 
+    private bool TerrainContientPlantesMalades(Terrain terrain)
+    {
+        return terrain.Plantes.Any(p => p.EstMalade);
+    }
+
     public void AfficherTousLesTerrainsAvecNavigation(List<Terrain> tousLesTerrains)
     {
         int index = 0;
-        ConsoleKey key;
-        bool clignote = false;
+        bool quitter = false;
 
-        do
+        while (!quitter)
         {
-            Console.Clear();
-            Console.WriteLine($"--- TERRAIN {index + 1}/{tousLesTerrains.Count} ---");
+            var terrain = tousLesTerrains[index];
+            bool contientMalades = TerrainContientPlantesMalades(terrain);
 
-            AfficherTerrain(tousLesTerrains[index], clignote);
-
-            Console.WriteLine("\n← gauche | → droite | Échap pour revenir au menu");
-            Thread.Sleep(500); // pour voir l’effet clignotant
-            clignote = !clignote;
-
-            if (Console.KeyAvailable)
+            if (!contientMalades) // Affichage non clignotant
             {
-                key = Console.ReadKey(true).Key;
+                Console.Clear();
+                Console.WriteLine($"--- TERRAIN {index + 1}/{tousLesTerrains.Count} ---");
+                AfficherTerrain(terrain, false);
+                Console.WriteLine("\n← gauche | → droite | Échap pour revenir au menu");
+
+                while (!Console.KeyAvailable)
+                {
+                    Thread.Sleep(100);
+                }
+
+                var key = Console.ReadKey(true).Key;
+
                 if (key == ConsoleKey.RightArrow && index < tousLesTerrains.Count - 1)
                     index++;
                 else if (key == ConsoleKey.LeftArrow && index > 0)
                     index--;
                 else if (key == ConsoleKey.Escape)
-                    break;
+                    quitter = true;
             }
-        } while (true);
+            else // Affichage clignotaant
+            {
+                bool clignote = false;
+                bool resterSurTerrain = true; 
+
+                while (resterSurTerrain && !quitter)
+                {
+                    Console.Clear();
+                    Console.WriteLine($"--- TERRAIN {index + 1}/{tousLesTerrains.Count} ---"); //défilement des numéros de terrain
+                    AfficherTerrain(terrain, clignote);
+                    Console.WriteLine("\n← gauche | → droite | Échap pour revenir au menu");
+
+                    Thread.Sleep(500);
+                    clignote = !clignote;
+
+                    if (Console.KeyAvailable) // lecture touche utilisateur
+                    {
+                        var key = Console.ReadKey(true).Key;
+
+                        if (key == ConsoleKey.RightArrow && index < tousLesTerrains.Count - 1)
+                        {
+                            index++;
+                            resterSurTerrain = false;
+                        }
+                        else if (key == ConsoleKey.LeftArrow && index > 0)
+                        {
+                            index--;
+                            resterSurTerrain = false;
+                        }
+                        else if (key == ConsoleKey.Escape)
+                        {
+                            quitter = true;
+                            resterSurTerrain = false;
+                        }
+                    }
+                }
+            }
+        }
     }
 
     public void AfficherJaugeEau(float pourcentage) //Affiche la jauge d'eau du terrain afin de ne pas en manquer
