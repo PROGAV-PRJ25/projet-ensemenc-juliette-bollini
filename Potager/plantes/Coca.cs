@@ -9,8 +9,6 @@ public class Coca : Plante
         _compteur++;
         Nom = $"Coca{_compteur}";
         Nature = "Coca";
-        SaisonsSemis = new List<Saison> { Saison.Printemps };
-
         EspaceNecessaire = 1.2f;
         VitesseDeCroissance = 0.6f;
         BesoinsEau = 0.4f;

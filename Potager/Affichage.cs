@@ -128,7 +128,7 @@ public class Affichage
             else // Affichage clignotaant
             {
                 bool clignote = false;
-                bool resterSurTerrain = true; 
+                bool resterSurTerrain = true;
 
                 while (resterSurTerrain && !quitter)
                 {

@@ -10,9 +10,7 @@ public class Pavot : Plante
         // Incrémente le compteur et génère le nom unique
         _compteur++;
         Nom = $"pavot{_compteur}";
-
         Nature = "Pavot";
-        SaisonsSemis = new List<Saison> { Saison.Printemps };
         EspaceNecessaire = 1.0f;
         VitesseDeCroissance = 1f;
         BesoinsEau = 0.5f;

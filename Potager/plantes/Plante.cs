@@ -2,7 +2,6 @@ public abstract class Plante
 {
     public string Nature { get; set; }
     public string Nom { get; protected set; }
-    public List<Saison> SaisonsSemis { get; set; }
     public float EspaceNecessaire { get; set; }
     public float VitesseDeCroissance { get; set; }
     public float BesoinsEau { get; set; }
@@ -18,10 +17,7 @@ public abstract class Plante
     public string Maladie { get; set; }
     public double ProbaTomberMalade { get; set; }
 
-    public Plante()
-    {
-        SaisonsSemis = new List<Saison>();
-    }
+    public Plante() { }
 
     public string GetSymbole(bool clignote = false)
     {
