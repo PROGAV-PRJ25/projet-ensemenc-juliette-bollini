@@ -1,4 +1,5 @@
-﻿var semisPavots = new List<Pavot>();
+﻿bool modeRapide = false;
+var semisPavots = new List<Pavot>();
 var semisCannabis = new List<Cannabis>();
 var semisCoca = new List<Coca>();
 var terrainsArgiles = new List<TerrainArgile>();
@@ -29,7 +30,7 @@ while (jour <= nombreDeSemaine * 7) // la boucle while sert à pouvoir effectuer
     while (!choixValide && jourEnCours == true)
     {
         Console.WriteLine("Que voulez-vous faire aujourd'hui?");
-        affichage.AfficherMenuClassique();
+        affichage.AfficherMenuClassique(modeRapide);
 
         ConsoleKeyInfo keyInfo = Console.ReadKey(intercept: true); // on lit les touches que l'utilisateur fait
         char touche = keyInfo.KeyChar;
@@ -533,7 +534,20 @@ while (jour <= nombreDeSemaine * 7) // la boucle while sert à pouvoir effectuer
             );
             boutique.VendreTout();
         }
-        else if (touche == '7') // Passer au jour suivant
+        else if (touche == '7') // Boutique
+        {
+            if (modeRapide)
+            {
+                Console.WriteLine($"\n-Vous passez en mode lent (jour par jour)");
+                modeRapide = false;
+            }
+            else
+            {
+                Console.WriteLine($"\n-Vous passez en mode Rapide (semaine par semaine)");
+                modeRapide = true;
+            }
+        }
+        else if (touche == '8') // Passer au jour suivant
         {
             Console.WriteLine("\nVous passez au jour suivant.");
             Console.WriteLine(
@@ -541,42 +555,70 @@ while (jour <= nombreDeSemaine * 7) // la boucle while sert à pouvoir effectuer
             );
             boutique.AfficherArgent();
             jourEnCours = false;
-            jour++;
+            int v;
+            if (modeRapide)
+            {
+                v = 7;
+            }
+            else
+            {
+                v = 1;
+            }
+            for (int t = 0; t < v; t++)
+            {
+                jour++;
+                for (int i = 0; i < terrainsSableux.Count; i++)
+                {
+                    for (int ii = 0; ii < terrainsSableux[i].Plantes.Count; ii++)
+                    {
+                        terrainsSableux[i]
+                            .Plantes[ii]
+                            .Croitre(terrainsSableux[i].TeneurEau, temperature, meteo);
+                        terrainsSableux[i].Plantes[ii].TomberMalade();
+                    }
+                    terrainsSableux[i].Assecher();
+                }
+                for (int i = 0; i < terrainsTerre.Count; i++)
+                {
+                    for (int ii = 0; ii < terrainsTerre[i].Plantes.Count; ii++)
+                    {
+                        terrainsTerre[i]
+                            .Plantes[ii]
+                            .Croitre(terrainsTerre[i].TeneurEau, temperature, meteo);
+                        terrainsTerre[i].Plantes[ii].TomberMalade();
+                    }
+                    terrainsTerre[i].Assecher();
+                }
+                for (int i = 0; i < terrainsArgiles.Count; i++)
+                {
+                    for (int ii = 0; ii < terrainsArgiles[i].Plantes.Count; ii++)
+                    {
+                        terrainsArgiles[i]
+                            .Plantes[ii]
+                            .Croitre(terrainsArgiles[i].TeneurEau, temperature, meteo);
+                        terrainsArgiles[i].Plantes[ii].TomberMalade();
+                    }
+                    terrainsArgiles[i].Assecher();
+                }
+                meteo = ChangementDeMeteo(0.4, 0.3, 0.3);
+                if (meteo == "pluvieux")
+                {
+                    Console.WriteLine("il a plus les terrains sont tous arrosés");
+                    for (int i = 0; i < terrainsSableux.Count; i++)
+                    {
+                        terrainsSableux[i].ArroserTerrain();
+                    }
+                    for (int i = 0; i < terrainsTerre.Count; i++)
+                    {
+                        terrainsTerre[i].ArroserTerrain();
+                    }
+                    for (int i = 0; i < terrainsArgiles.Count; i++)
+                    {
+                        terrainsArgiles[i].ArroserTerrain();
+                    }
+                }
+            }
             temperature = ChangementDeTemperature();
-            meteo = ChangementDeMeteo(0.4, 0.3, 0.3);
-            for (int i = 0; i < terrainsSableux.Count; i++)
-            {
-                for (int ii = 0; ii < terrainsSableux[i].Plantes.Count; ii++)
-                {
-                    terrainsSableux[i]
-                        .Plantes[ii]
-                        .Croitre(terrainsSableux[i].TeneurEau, temperature, meteo);
-                    terrainsSableux[i].Plantes[ii].TomberMalade();
-                }
-                terrainsSableux[i].Assecher();
-            }
-            for (int i = 0; i < terrainsTerre.Count; i++)
-            {
-                for (int ii = 0; ii < terrainsTerre[i].Plantes.Count; ii++)
-                {
-                    terrainsTerre[i]
-                        .Plantes[ii]
-                        .Croitre(terrainsTerre[i].TeneurEau, temperature, meteo);
-                    terrainsTerre[i].Plantes[ii].TomberMalade();
-                }
-                terrainsTerre[i].Assecher();
-            }
-            for (int i = 0; i < terrainsArgiles.Count; i++)
-            {
-                for (int ii = 0; ii < terrainsArgiles[i].Plantes.Count; ii++)
-                {
-                    terrainsArgiles[i]
-                        .Plantes[ii]
-                        .Croitre(terrainsArgiles[i].TeneurEau, temperature, meteo);
-                    terrainsArgiles[i].Plantes[ii].TomberMalade();
-                }
-                terrainsArgiles[i].Assecher();
-            }
         }
         else
         {

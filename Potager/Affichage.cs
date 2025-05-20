@@ -23,7 +23,7 @@ public class Affichage
         );
     }
 
-    public void AfficherMenuClassique() //une lecture des touches données par le joueur est à faire
+    public void AfficherMenuClassique(bool modeRapide) //une lecture des touches données par le joueur est à faire
     {
         Console.WriteLine("\n--- Menu ---");
         Console.WriteLine("1. Planter");
@@ -32,7 +32,15 @@ public class Affichage
         Console.WriteLine("4. Ratisser");
         Console.WriteLine("5. Regarder mes terrains ");
         Console.WriteLine("6. Boutique ");
-        Console.WriteLine("7. Fini ");
+        if (modeRapide)
+        {
+            Console.WriteLine("7. Passer en mode lent (jour par jour) ");
+        }
+        else
+        {
+            Console.WriteLine("7. Passer en mode rapide (semain par semain) ");
+        }
+        Console.WriteLine("8. Fini ");
     }
 
     public void AfficherAlerte(string message) // voir pour le type de message entre alerte
@@ -42,7 +50,7 @@ public class Affichage
         Console.ResetColor();
     }
 
-    public void AfficherTerrain(Terrain terrain) //Affichage du terrain après une modification 
+    public void AfficherTerrain(Terrain terrain) //Affichage du terrain après une modification
     {
         int lignes = 3;
         int colonnes = 3;
