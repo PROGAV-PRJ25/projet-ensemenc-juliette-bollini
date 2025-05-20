@@ -23,12 +23,14 @@ public abstract class Plante
         SaisonsSemis = new List<Saison>();
     }
 
-    public string GetSymbole()
+    public string GetSymbole(bool clignote = false)
     {
         if (Nature == null)
             return ""; // Sol vide
         if (EstVivante == false)
             return "💀";
+        if (clignote && EstMalade)
+            return "💊"; // Symbole médicament
         else if (EstMature == false)
             return "🌱";
         else if (Nature == "Cannabis") //comme les noms des plantes seront associées à un numéro le contains parait nécessaire
