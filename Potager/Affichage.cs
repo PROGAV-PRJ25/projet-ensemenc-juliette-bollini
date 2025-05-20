@@ -50,7 +50,7 @@ public class Affichage
         Console.ResetColor();
     }
 
-    public void AfficherTerrain(Terrain terrain) //Affichage du terrain après une modification
+    public void AfficherTerrain(Terrain terrain, bool clignote) //Affichage du terrain après une modification
     {
         int lignes = 3;
         int colonnes = 3;
@@ -71,7 +71,7 @@ public class Affichage
                 if (index < terrain.Plantes.Count)
                 {
                     var plante = terrain.Plantes[index];
-                    Console.Write($" {plante?.GetSymbole() ?? " "} |");
+                    Console.Write($" {plante?.GetSymbole(clignote) ?? " "} |");
                 }
                 else
                 {
@@ -89,28 +89,34 @@ public class Affichage
         AfficherJaugeEau(terrain.TeneurEau);
     }
 
-    public void AfficherTousLesTerrainsAvecNavigation(List<Terrain> tousLesTerrains) //Navigation entre les terrains avec les flèches du clavier
+    public void AfficherTousLesTerrainsAvecNavigation(List<Terrain> tousLesTerrains)
     {
         int index = 0;
         ConsoleKey key;
+        bool clignote = false;
 
         do
         {
             Console.Clear();
             Console.WriteLine($"--- TERRAIN {index + 1}/{tousLesTerrains.Count} ---");
 
-            AfficherTerrain(tousLesTerrains[index]);
+            AfficherTerrain(tousLesTerrains[index], clignote);
 
-            Console.WriteLine(
-                "\nUtilise les flèches gauche/droite pour naviguer. Échap pour revenir au menu."
-            );
-            key = Console.ReadKey(true).Key;
+            Console.WriteLine("\n← gauche | → droite | Échap pour revenir au menu");
+            Thread.Sleep(500); // pour voir l’effet clignotant
+            clignote = !clignote;
 
-            if (key == ConsoleKey.RightArrow && index < tousLesTerrains.Count - 1)
-                index++;
-            else if (key == ConsoleKey.LeftArrow && index > 0)
-                index--;
-        } while (key != ConsoleKey.Escape);
+            if (Console.KeyAvailable)
+            {
+                key = Console.ReadKey(true).Key;
+                if (key == ConsoleKey.RightArrow && index < tousLesTerrains.Count - 1)
+                    index++;
+                else if (key == ConsoleKey.LeftArrow && index > 0)
+                    index--;
+                else if (key == ConsoleKey.Escape)
+                    break;
+            }
+        } while (true);
     }
 
     public void AfficherJaugeEau(float pourcentage) //Affiche la jauge d'eau du terrain afin de ne pas en manquer

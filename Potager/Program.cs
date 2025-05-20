@@ -84,7 +84,7 @@ while (jour <= nombreDeSemaine * 7) // la boucle while sert à pouvoir effectuer
                                     semisCoca.Add(new Coca());
                                     terrainsTerre[numeroTerrain].AjouterPlante(semisCoca[0]);
                                     semisCoca.RemoveAt(0);
-                                    affichage.AfficherTerrain(terrainsTerre[numeroTerrain]);
+                                    affichage.AfficherTerrain(terrainsTerre[numeroTerrain], false);
                                 }
                                 else if (touche3 == '2')
                                 {
@@ -93,7 +93,7 @@ while (jour <= nombreDeSemaine * 7) // la boucle while sert à pouvoir effectuer
                                     semisCannabis.Add(new Cannabis());
                                     terrainsTerre[numeroTerrain].AjouterPlante(semisCannabis[0]);
                                     semisCannabis.RemoveAt(0);
-                                    affichage.AfficherTerrain(terrainsTerre[numeroTerrain]);
+                                    affichage.AfficherTerrain(terrainsTerre[numeroTerrain], false);
                                 }
                                 else if (touche3 == '3')
                                 {
@@ -102,7 +102,7 @@ while (jour <= nombreDeSemaine * 7) // la boucle while sert à pouvoir effectuer
                                     semisPavots.Add(new Pavot());
                                     terrainsTerre[numeroTerrain].AjouterPlante(semisPavots[0]);
                                     semisPavots.RemoveAt(0);
-                                    affichage.AfficherTerrain(terrainsTerre[numeroTerrain]);
+                                    affichage.AfficherTerrain(terrainsTerre[numeroTerrain], false);
                                 }
                                 else
                                 {
@@ -149,7 +149,10 @@ while (jour <= nombreDeSemaine * 7) // la boucle while sert à pouvoir effectuer
                                     semisCoca.Add(new Coca());
                                     terrainsSableux[numeroTerrain].AjouterPlante(semisCoca[0]);
                                     semisCoca.RemoveAt(0);
-                                    affichage.AfficherTerrain(terrainsSableux[numeroTerrain]);
+                                    affichage.AfficherTerrain(
+                                        terrainsSableux[numeroTerrain],
+                                        false
+                                    );
                                 }
                                 else if (touche3 == '2')
                                 {
@@ -158,7 +161,10 @@ while (jour <= nombreDeSemaine * 7) // la boucle while sert à pouvoir effectuer
                                     semisCannabis.Add(new Cannabis());
                                     terrainsSableux[numeroTerrain].AjouterPlante(semisCannabis[0]);
                                     semisCannabis.RemoveAt(0);
-                                    affichage.AfficherTerrain(terrainsSableux[numeroTerrain]);
+                                    affichage.AfficherTerrain(
+                                        terrainsSableux[numeroTerrain],
+                                        false
+                                    );
                                 }
                                 else if (touche3 == '3')
                                 {
@@ -167,7 +173,10 @@ while (jour <= nombreDeSemaine * 7) // la boucle while sert à pouvoir effectuer
                                     semisPavots.Add(new Pavot());
                                     terrainsSableux[numeroTerrain].AjouterPlante(semisPavots[0]);
                                     semisPavots.RemoveAt(0);
-                                    affichage.AfficherTerrain(terrainsSableux[numeroTerrain]);
+                                    affichage.AfficherTerrain(
+                                        terrainsSableux[numeroTerrain],
+                                        false
+                                    );
                                 }
                                 else
                                 {
@@ -214,7 +223,10 @@ while (jour <= nombreDeSemaine * 7) // la boucle while sert à pouvoir effectuer
                                     semisCoca.Add(new Coca());
                                     terrainsArgiles[numeroTerrain].AjouterPlante(semisCoca[0]);
                                     semisCoca.RemoveAt(0);
-                                    affichage.AfficherTerrain(terrainsArgiles[numeroTerrain]);
+                                    affichage.AfficherTerrain(
+                                        terrainsArgiles[numeroTerrain],
+                                        false
+                                    );
                                 }
                                 else if (touche3 == '2')
                                 {
@@ -223,7 +235,10 @@ while (jour <= nombreDeSemaine * 7) // la boucle while sert à pouvoir effectuer
                                     semisCannabis.Add(new Cannabis());
                                     terrainsArgiles[numeroTerrain].AjouterPlante(semisCannabis[0]);
                                     semisCannabis.RemoveAt(0);
-                                    affichage.AfficherTerrain(terrainsArgiles[numeroTerrain]);
+                                    affichage.AfficherTerrain(
+                                        terrainsArgiles[numeroTerrain],
+                                        false
+                                    );
                                 }
                                 else if (touche3 == '3')
                                 {
@@ -232,7 +247,10 @@ while (jour <= nombreDeSemaine * 7) // la boucle while sert à pouvoir effectuer
                                     semisPavots.Add(new Pavot());
                                     terrainsArgiles[numeroTerrain].AjouterPlante(semisPavots[0]);
                                     semisPavots.RemoveAt(0);
-                                    affichage.AfficherTerrain(terrainsArgiles[numeroTerrain]);
+                                    affichage.AfficherTerrain(
+                                        terrainsArgiles[numeroTerrain],
+                                        false
+                                    );
                                 }
                                 else
                                 {
