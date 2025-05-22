@@ -556,20 +556,7 @@ while (jour <= nombreDeSemaine * 7) // la boucle while sert à pouvoir effectuer
             );
             boutique.VendreTout();
         }
-        else if (touche == '7') // Boutique
-        {
-            if (mode.ModeRapide)
-            {
-                Console.WriteLine($"\n-Vous passez en mode lent (jour par jour)");
-                mode.ChangerDeMode();
-            }
-            else
-            {
-                Console.WriteLine($"\n-Vous passez en mode Rapide (semaine par semaine)");
-                mode.ChangerDeMode();
-            }
-        }
-        else if (touche == '8')
+        else if (touche == '7') //Soigner
         {
             Console.WriteLine("\n💊 Vous avez choisi de soigner un terrain !");
             Console.WriteLine("Quel type de terrain voulez-vous soigner ?");
@@ -611,6 +598,20 @@ while (jour <= nombreDeSemaine * 7) // la boucle while sert à pouvoir effectuer
                 Console.WriteLine(" Aucun terrain de ce type.");
             }
         }
+        else if (touche == '8') // Mode rapide , lent
+        {
+            if (mode.ModeRapide)
+            {
+                Console.WriteLine($"\n-Vous passez en mode lent (jour par jour)");
+                mode.ChangerDeMode();
+            }
+            else
+            {
+                Console.WriteLine($"\n-Vous passez en mode Rapide (semaine par semaine)");
+                mode.ChangerDeMode();
+            }
+        }
+
         else if (touche == '9') // Passer au jour suivant
         {
             if (mode.ModeRapide)
