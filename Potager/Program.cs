@@ -585,8 +585,6 @@ while (jour <= nombreDeSemaine * 7) // la boucle while sert à pouvoir effectuer
                     .ToList(),
                 boutique
             );
-            temperature = meteo.ChangementDeTemperature();
-            etatMeteo = meteo.ChangementDeMeteo(0.4, 0.4, 0.2);
 
             int v;
             if (mode.ModeRapide)
@@ -599,6 +597,8 @@ while (jour <= nombreDeSemaine * 7) // la boucle while sert à pouvoir effectuer
             }
             for (int t = 0; t < v; t++)
             {
+                temperature = meteo.ChangementDeTemperature();
+                etatMeteo = meteo.ChangementDeMeteo(0.4, 0.4, 0.2);
                 jour++;
                 for (int i = 0; i < terrainsSableux.Count; i++)
                 {
