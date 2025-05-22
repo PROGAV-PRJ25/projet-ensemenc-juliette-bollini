@@ -19,7 +19,7 @@ public class Affichage
         Console.WriteLine("Ce jeu est une satire pédagogique. Ne reproduisez RIEN chez vous. ");
         Console.ResetColor();
         Console.WriteLine(
-            "Bienvenue dans ENSemenC, vous êtes au Mexique au sein d'un terrain composé de plusieurs potagers sur lesquels vous devez faire poussez des plantes récréatives à caractéristiques hallucinogènes ! "
+            "Bienvenue dans ENSemenC, vous êtes au Mexique au sein d'un terrain composé de plusieurs potagers sur lesquels vous devez faire poussez des plantes récréatives à caractéristiques hallucinogènes !\n Le but du jeu est de gagner le plus de sous possible avec vos récoltes pendant le nombre de semaines que vous souhaitez jouer "
         );
     }
 
@@ -211,7 +211,7 @@ public class Affichage
             {
                 Console.ForegroundColor = ConsoleColor.DarkRed;
                 Console.WriteLine(
-                    "❌ Pas assez d'argent pour corrompre ! Le plantes du terrain ont été saisies !"
+                    "Pas assez d'argent pour corrompre ! Le plantes du terrain ont été saisies !"
                 );
                 Console.ResetColor();
                 // Supprimer toutes les plantes du terrain
