@@ -31,16 +31,18 @@ public class Affichage
         Console.WriteLine("3. Récolter");
         Console.WriteLine("4. Ratisser");
         Console.WriteLine("5. Regarder mes terrains ");
-        Console.WriteLine("6. Boutique ");
+        Console.WriteLine("6. Vendre ");
+        Console.WriteLine("7. Soigner");
+
         if (modeRapide)
         {
-            Console.WriteLine("7. Passer en mode lent (jour par jour) ");
+            Console.WriteLine("8. Passer en mode lent (jour par jour) ");
         }
         else
         {
-            Console.WriteLine("7. Passer en mode rapide (semaine par semaine) ");
+            Console.WriteLine("8. Passer en mode rapide (semaine par semaine) ");
         }
-        Console.WriteLine("8. Fini ");
+        Console.WriteLine("9. Fini ");
     }
 
     public void AfficherAlerte(string message) // voir pour le type de message entre alerte
@@ -184,7 +186,7 @@ public class Affichage
         Random rnd = new Random();
         double tirage = rnd.NextDouble();
 
-        if (tirage < 0.90 && tousLesTerrains.Count > 0) // 15% de chance
+        if (tirage < 0.01 && tousLesTerrains.Count > 0) // 15% de chance
         {
             int terrainIndex = rnd.Next(tousLesTerrains.Count);
             Terrain terrainCible = tousLesTerrains[terrainIndex];
@@ -208,7 +210,9 @@ public class Affichage
             else
             {
                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                Console.WriteLine("❌ Pas assez d'argent pour corrompre ! Le terrain a été saisi !");
+                Console.WriteLine(
+                    "❌ Pas assez d'argent pour corrompre ! Le plantes du terrain ont été saisies !"
+                );
                 Console.ResetColor();
                 // Supprimer toutes les plantes du terrain
                 terrainCible.Plantes.Clear();

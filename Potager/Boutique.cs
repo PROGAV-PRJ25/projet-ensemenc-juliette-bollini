@@ -60,4 +60,35 @@ public class Boutique
     {
         Argent = Math.Max(0, Argent - montant); //
     }
+    public bool AcheterSoin(Terrain terrain) //on peut soigner toutes les plantes d'un terrain pour 15€
+    {
+        const int prixSoin = 15;
+
+        if (Argent >= prixSoin)
+        {
+            Argent -= prixSoin;
+
+            foreach (var plante in terrain.Plantes)
+            {
+                if (plante.EstMalade)
+                {
+                    plante.EstMalade = false;
+                }
+            }
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine(
+                $" Toutes les plantes du terrain '{terrain.Nom}' ont été soignées pour {prixSoin}€."
+            );
+            Console.ResetColor();
+            return true;
+        }
+        else
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Vous n'avez pas assez d'argent pour soigner ce terrain !");
+            Console.ResetColor();
+            return false;
+        }
+    }
 }
