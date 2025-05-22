@@ -569,7 +569,49 @@ while (jour <= nombreDeSemaine * 7) // la boucle while sert à pouvoir effectuer
                 mode.ChangerDeMode();
             }
         }
-        else if (touche == '8') // Passer au jour suivant
+        else if (touche == '8')
+        {
+            Console.WriteLine("\n💊 Vous avez choisi de soigner un terrain !");
+            Console.WriteLine("Quel type de terrain voulez-vous soigner ?");
+            Console.WriteLine("1) Terre  2) Sable  3) Argile");
+
+            ConsoleKeyInfo typeKey = Console.ReadKey(intercept: true);
+            char typeChoix = typeKey.KeyChar;
+
+            List<Terrain> listeTerrains = null;
+
+            if (typeChoix == '1')
+                listeTerrains = terrainsTerre.Cast<Terrain>().ToList();
+            else if (typeChoix == '2')
+                listeTerrains = terrainsSableux.Cast<Terrain>().ToList();
+            else if (typeChoix == '3')
+                listeTerrains = terrainsArgiles.Cast<Terrain>().ToList();
+
+            if (listeTerrains != null && listeTerrains.Count > 0)
+            {
+                Console.WriteLine("\nSur quel terrain ?");
+                for (int i = 0; i < listeTerrains.Count; i++)
+                {
+                    Console.WriteLine($"{i + 1}) {listeTerrains[i].Nom}");
+                }
+
+                int numero = int.Parse(Console.ReadLine()!) - 1;
+
+                if (numero >= 0 && numero < listeTerrains.Count)
+                {
+                    boutique.AcheterSoin(listeTerrains[numero]);
+                }
+                else
+                {
+                    Console.WriteLine("Numéro de terrain invalide.");
+                }
+            }
+            else
+            {
+                Console.WriteLine(" Aucun terrain de ce type.");
+            }
+        }
+        else if (touche == '9') // Passer au jour suivant
         {
             if (mode.ModeRapide)
             {
