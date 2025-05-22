@@ -8,9 +8,12 @@ var terrainsSableux = new List<TerrainSableux>();
 var boutique = new Boutique();
 int nombreDeSemaine;
 var affichage = new Affichage();
-terrainsArgiles.Add(new TerrainArgile());
-terrainsSableux.Add(new TerrainSableux());
-terrainsTerre.Add(new TerrainTerre());
+for (int i = 0; i < 3; i++)
+{
+    terrainsArgiles.Add(new TerrainArgile());
+    terrainsSableux.Add(new TerrainSableux());
+    terrainsTerre.Add(new TerrainTerre());
+}
 Meteo meteo = new Meteo();
 int temperature = meteo.ChangementDeTemperature();
 string etatMeteo = meteo.ChangementDeMeteo(0.4, 0.4, 0.2);
