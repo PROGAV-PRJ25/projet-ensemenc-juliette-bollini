@@ -611,9 +611,9 @@ while (jour <= nombreDeSemaine * 7) // la boucle while sert à pouvoir effectuer
                 mode.ChangerDeMode();
             }
         }
-
         else if (touche == '9') // Passer au jour suivant
         {
+            Console.Clear();
             if (mode.ModeRapide)
             {
                 Console.WriteLine("\nVous passez au semaine suivant.");
