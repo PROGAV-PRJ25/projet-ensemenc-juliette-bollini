@@ -578,7 +578,7 @@ while (jour <= nombreDeSemaine * 7) // la boucle while sert à pouvoir effectuer
             ConsoleKeyInfo typeKey = Console.ReadKey(intercept: true);
             char typeChoix = typeKey.KeyChar;
 
-            List<Terrain> listeTerrains = null;
+            List<Terrain>? listeTerrains = null;
 
             if (typeChoix == '1')
                 listeTerrains = terrainsTerre.Cast<Terrain>().ToList();
