@@ -78,7 +78,7 @@ public abstract class Plante
         Production += delta;
         if (EstMalade)
         {
-            Production -= 0.1;
+            Production -= 0.01;
         }
         if (Production >= 1 && !EstMature)
         {
