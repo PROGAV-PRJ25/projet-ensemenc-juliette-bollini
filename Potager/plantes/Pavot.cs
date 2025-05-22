@@ -12,7 +12,7 @@ public class Pavot : Plante
         Nom = $"pavot{_compteur}";
         Nature = "Pavot";
         EspaceNecessaire = 1.0f;
-        VitesseDeCroissance = 1f;
+        VitesseDeCroissance = 0.02f;
         BesoinsEau = 0.5f;
         BesoinsLuminosite = 0.7f;
         TemperatureMin = 10;

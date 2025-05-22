@@ -10,7 +10,7 @@ public class Coca : Plante
         Nom = $"Coca{_compteur}";
         Nature = "Coca";
         EspaceNecessaire = 1.2f;
-        VitesseDeCroissance = 0.6f;
+        VitesseDeCroissance = 0.04f;
         BesoinsEau = 0.4f;
         BesoinsLuminosite = 0.8f;
         TemperatureMin = 18;

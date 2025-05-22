@@ -10,7 +10,7 @@ public class Cannabis : Plante
         Nature = "Cannabis";
         Nom = $"Canabis{_compteur}";
         EspaceNecessaire = 2.0f;
-        VitesseDeCroissance = 0.8f;
+        VitesseDeCroissance = 0.08f;
         BesoinsEau = 0.6f;
         BesoinsLuminosite = 0.9f;
         TemperatureMin = 15;
