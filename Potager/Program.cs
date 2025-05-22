@@ -615,7 +615,7 @@ while (jour <= nombreDeSemaine * 7) // la boucle while sert à pouvoir effectuer
         {
             if (mode.ModeRapide)
             {
-                Console.WriteLine("\nVous passez au jour suivant.");
+                Console.WriteLine("\nVous passez au semaine suivant.");
             }
             else
             {
