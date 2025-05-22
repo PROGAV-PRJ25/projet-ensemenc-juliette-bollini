@@ -620,7 +620,7 @@ while (jour <= nombreDeSemaine * 7) // la boucle while sert à pouvoir effectuer
             }
             else
             {
-                Console.WriteLine("\nVous passez a la semaine suivante.");
+                Console.WriteLine("\nVous passez a la jour suivante.");
             }
             Console.WriteLine(
                 $"\n-Vous avez dans votre stock {Pavot.TotalHarvested} de Pavot \n-Vous avez dans votre stock {Cannabis.TotalHarvested} de Cannabis \n-Vous avez dans votre stock {Coca.TotalHarvested} de Cocaïne"
