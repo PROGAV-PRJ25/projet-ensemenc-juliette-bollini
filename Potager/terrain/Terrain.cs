@@ -1,10 +1,10 @@
 public abstract class Terrain
 {
     public int Place { get; set; } = 9;
-    public string Nom { get; protected set; }
+    public string? Nom { get; protected set; }
 
     // Type de sol (sable, terre, argile…)
-    public string TypeSol { get; set; }
+    public string? TypeSol { get; set; }
 
     // Pourcentage d'eau retenue dans le sol (0 à 1)
     public int TeneurEau { get; set; }

@@ -1,7 +1,7 @@
 public abstract class Plante
 {
-    public string Nature { get; set; }
-    public string Nom { get; protected set; }
+    public string? Nature { get; set; }
+    public string? Nom { get; protected set; }
     public float EspaceNecessaire { get; set; }
     public float VitesseDeCroissance { get; set; }
     public float BesoinsEau { get; set; }
@@ -14,7 +14,7 @@ public abstract class Plante
     public bool EstVivante { get; set; } = true;
     public bool EstMature { get; set; } = false;
     public bool EstMalade { get; set; } = false;
-    public string Maladie { get; set; }
+    public string? Maladie { get; set; }
     public double ProbaTomberMalade { get; set; }
 
     public Plante() { }
