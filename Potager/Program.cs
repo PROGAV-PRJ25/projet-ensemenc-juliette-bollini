@@ -1,4 +1,4 @@
-﻿bool modeRapide = false;
+﻿ModeDeJeux mode = new ModeDeJeux();
 var semisPavots = new List<Pavot>();
 var semisCannabis = new List<Cannabis>();
 var semisCoca = new List<Coca>();
@@ -30,7 +30,7 @@ while (jour <= nombreDeSemaine * 7) // la boucle while sert à pouvoir effectuer
     while (!choixValide && jourEnCours == true)
     {
         Console.WriteLine("Que voulez-vous faire aujourd'hui?");
-        affichage.AfficherMenuClassique(modeRapide);
+        affichage.AfficherMenuClassique(mode.ModeRapide);
 
         ConsoleKeyInfo keyInfo = Console.ReadKey(intercept: true); // on lit les touches que l'utilisateur fait
         char touche = keyInfo.KeyChar;
@@ -554,15 +554,15 @@ while (jour <= nombreDeSemaine * 7) // la boucle while sert à pouvoir effectuer
         }
         else if (touche == '7') // Boutique
         {
-            if (modeRapide)
+            if (mode.ModeRapide)
             {
                 Console.WriteLine($"\n-Vous passez en mode lent (jour par jour)");
-                modeRapide = false;
+                mode.ChangerDeMode();
             }
             else
             {
                 Console.WriteLine($"\n-Vous passez en mode Rapide (semaine par semaine)");
-                modeRapide = true;
+                mode.ChangerDeMode();
             }
         }
         else if (touche == '8') // Passer au jour suivant
@@ -583,7 +583,7 @@ while (jour <= nombreDeSemaine * 7) // la boucle while sert à pouvoir effectuer
             );
 
             int v;
-            if (modeRapide)
+            if (mode.ModeRapide)
             {
                 v = 7;
             }
