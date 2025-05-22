@@ -11,8 +11,9 @@ var affichage = new Affichage();
 terrainsArgiles.Add(new TerrainArgile());
 terrainsSableux.Add(new TerrainSableux());
 terrainsTerre.Add(new TerrainTerre());
-string meteo = ChangementDeMeteo(0.4, 0.3, 0.3);
-int temperature = ChangementDeTemperature();
+Meteo meteo = new Meteo();
+int temperature = meteo.ChangementDeTemperature();
+string etatMeteo = meteo.ChangementDeMeteo(0.4, 0.4, 0.2);
 affichage.AfficherDebut();
 
 Console.WriteLine("combien de semaine voulez vous jouer?");
@@ -22,7 +23,7 @@ int jour = 1;
 while (jour <= nombreDeSemaine * 7) // la boucle while sert à pouvoir effectuer plusieurs actions le même jour
 {
     Console.WriteLine($"jour: {jour}");
-    Console.WriteLine($"Le ciel est {meteo}");
+    Console.WriteLine($"Le ciel est {etatMeteo}");
     Console.WriteLine($"la température est de {temperature} °C");
     bool choixValide = false;
     bool jourEnCours = true; // variable qui change pour changer de jour
@@ -581,6 +582,8 @@ while (jour <= nombreDeSemaine * 7) // la boucle while sert à pouvoir effectuer
                     .ToList(),
                 boutique
             );
+            temperature = meteo.ChangementDeTemperature();
+            etatMeteo = meteo.ChangementDeMeteo(0.4, 0.4, 0.2);
 
             int v;
             if (modeRapide)
@@ -600,7 +603,7 @@ while (jour <= nombreDeSemaine * 7) // la boucle while sert à pouvoir effectuer
                     {
                         terrainsSableux[i]
                             .Plantes[ii]
-                            .Croitre(terrainsSableux[i].TeneurEau, temperature, meteo);
+                            .Croitre(terrainsSableux[i].TeneurEau, temperature, etatMeteo);
                         terrainsSableux[i].Plantes[ii].TomberMalade();
                     }
                     terrainsSableux[i].Assecher();
@@ -611,7 +614,7 @@ while (jour <= nombreDeSemaine * 7) // la boucle while sert à pouvoir effectuer
                     {
                         terrainsTerre[i]
                             .Plantes[ii]
-                            .Croitre(terrainsTerre[i].TeneurEau, temperature, meteo);
+                            .Croitre(terrainsTerre[i].TeneurEau, temperature, etatMeteo);
                         terrainsTerre[i].Plantes[ii].TomberMalade();
                     }
                     terrainsTerre[i].Assecher();
@@ -622,13 +625,12 @@ while (jour <= nombreDeSemaine * 7) // la boucle while sert à pouvoir effectuer
                     {
                         terrainsArgiles[i]
                             .Plantes[ii]
-                            .Croitre(terrainsArgiles[i].TeneurEau, temperature, meteo);
+                            .Croitre(terrainsArgiles[i].TeneurEau, temperature, etatMeteo);
                         terrainsArgiles[i].Plantes[ii].TomberMalade();
                     }
                     terrainsArgiles[i].Assecher();
                 }
-                meteo = ChangementDeMeteo(0.4, 0.3, 0.3);
-                if (meteo == "pluvieux")
+                if (etatMeteo == "pluvieux")
                 {
                     Console.WriteLine("il a plus les terrains sont tous arrosés");
                     for (int i = 0; i < terrainsSableux.Count; i++)
@@ -645,34 +647,10 @@ while (jour <= nombreDeSemaine * 7) // la boucle while sert à pouvoir effectuer
                     }
                 }
             }
-            temperature = ChangementDeTemperature();
         }
         else
         {
             Console.WriteLine("\nSaisie invalide. Veuillez appuyer sur une touche valide.");
         }
-    }
-}
-int ChangementDeTemperature()
-{
-    Random rnd = new Random();
-    return rnd.Next(18, 25);
-}
-string ChangementDeMeteo(double probaEnsoleiller, double probaNuageux, double probapluvieux)
-{
-    Random rnd = new Random();
-    double tirage = rnd.NextDouble();
-
-    if (tirage < probaEnsoleiller)
-    {
-        return "ensoleiller";
-    }
-    else if (tirage < probaEnsoleiller + probaNuageux)
-    {
-        return "nuageux";
-    }
-    else
-    {
-        return "pluvieux";
     }
 }
