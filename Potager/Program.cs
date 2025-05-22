@@ -565,7 +565,7 @@ while (jour <= nombreDeSemaine * 7) // la boucle while sert à pouvoir effectuer
             ConsoleKeyInfo typeKey = Console.ReadKey(intercept: true);
             char typeChoix = typeKey.KeyChar;
 
-            List<Terrain> listeTerrains = null;
+            List<Terrain>? listeTerrains = null;
 
             if (typeChoix == '1')
                 listeTerrains = terrainsTerre.Cast<Terrain>().ToList();
@@ -614,10 +614,19 @@ while (jour <= nombreDeSemaine * 7) // la boucle while sert à pouvoir effectuer
 
         else if (touche == '9') // Passer au jour suivant
         {
-            Console.WriteLine("\nVous passez au jour suivant.");
+            if (mode.ModeRapide)
+            {
+                Console.WriteLine("\nVous passez au jour suivant.");
+            }
+            else
+            {
+                Console.WriteLine("\nVous passez a la semaine suivante.");
+            }
             Console.WriteLine(
                 $"\n-Vous avez dans votre stock {Pavot.TotalHarvested} de Pavot \n-Vous avez dans votre stock {Cannabis.TotalHarvested} de Cannabis \n-Vous avez dans votre stock {Coca.TotalHarvested} de Cocaïne"
             );
+            Thread.Sleep(2000);
+            Console.Clear();
             boutique.AfficherArgent();
             jourEnCours = false;
             affichage.RecherchePolice(
