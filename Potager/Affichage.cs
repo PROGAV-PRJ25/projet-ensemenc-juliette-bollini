@@ -178,4 +178,44 @@ public class Affichage
         Console.Write(new string('░', vides));
         Console.WriteLine($"] {pourcentage}%");
     }
+
+    public void RecherchePolice(List<Terrain> tousLesTerrains, Boutique boutique)
+    {
+        Random rnd = new Random();
+        double tirage = rnd.NextDouble();
+
+        if (tirage < 0.90 && tousLesTerrains.Count > 0) // 15% de chance
+        {
+            int terrainIndex = rnd.Next(tousLesTerrains.Count);
+            Terrain terrainCible = tousLesTerrains[terrainIndex];
+            int coutCorruption = 500;
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(
+                $"\n🚔 Une patrouille de police a repéré une activité suspecte sur le terrain '{terrainCible.Nom}' !"
+            );
+            Console.ResetColor();
+
+            if (boutique.Argent >= coutCorruption)
+            {
+                boutique.RetirerArgent(coutCorruption);
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine(
+                    $"💸 Vous avez corrompu la police pour {coutCorruption}€. Terrain sauvé !"
+                );
+                Console.ResetColor();
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("❌ Pas assez d'argent pour corrompre ! Le terrain a été saisi !");
+                Console.ResetColor();
+                // Supprimer toutes les plantes du terrain
+                terrainCible.Plantes.Clear();
+
+                // Supprimer le terrain
+                tousLesTerrains.RemoveAt(terrainIndex);
+            }
+        }
+    }
 }

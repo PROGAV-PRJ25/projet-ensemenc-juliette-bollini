@@ -55,4 +55,8 @@ public class Boutique
     {
         Console.WriteLine($"\n💸 Argent actuel : {Argent}€");
     }
+    public void RetirerArgent(int montant)
+    {
+        Argent = Math.Max(0, Argent - montant); // 
+    }
 }

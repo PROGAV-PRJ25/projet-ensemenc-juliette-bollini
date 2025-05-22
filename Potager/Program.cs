@@ -573,6 +573,15 @@ while (jour <= nombreDeSemaine * 7) // la boucle while sert à pouvoir effectuer
             );
             boutique.AfficherArgent();
             jourEnCours = false;
+            affichage.RecherchePolice(
+                terrainsTerre
+                    .Cast<Terrain>()
+                    .Concat(terrainsSableux)
+                    .Concat(terrainsArgiles)
+                    .ToList(),
+                boutique
+            );
+
             int v;
             if (modeRapide)
             {
