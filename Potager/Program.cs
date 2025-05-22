@@ -632,7 +632,6 @@ while (jour <= nombreDeSemaine * 7) // la boucle while sert à pouvoir effectuer
                 }
                 if (etatMeteo == "pluvieux")
                 {
-                    Console.WriteLine("il a plus les terrains sont tous arrosés");
                     for (int i = 0; i < terrainsSableux.Count; i++)
                     {
                         terrainsSableux[i].ArroserTerrain();
